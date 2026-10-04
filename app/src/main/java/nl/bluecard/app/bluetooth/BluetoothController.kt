@@ -144,6 +144,10 @@ class BluetoothController(private val context: Context) {
     }
 
     /** Classic Bluetooth discovery (~12 s). Collecting starts it, cancelling the collection stops it. */
+    /** Tables announcing themselves nearby over BLE, while collected (see [nl.bluecard.app.nearby.TableBeaconScanner]). */
+    fun announcedTables(): Flow<List<nl.bluecard.app.nearby.TableBeaconFormat.Beacon>> =
+        nl.bluecard.app.nearby.TableBeaconScanner.tables(context)
+
     fun discover(): Flow<DiscoveryEvent> = callbackFlow {
         val a = adapter
         if (a == null || !BluetoothPermissions.hasScan(context)) {

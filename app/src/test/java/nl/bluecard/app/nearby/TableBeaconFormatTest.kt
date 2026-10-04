@@ -32,4 +32,36 @@ class TableBeaconFormatTest {
         val name = TableBeaconFormat.decode(TableBeaconFormat.encode("🃏🃏🃏🃏🃏🃏", 0, 1))!!.hostName
         assertEquals("🃏🃏🃏🃏", name)
     }
+
+    @Test
+    fun `the host address and a running game travel along`() {
+        val bytes = TableBeaconFormat.encode("Testhost", 1, 42, inGame = true, address = "74:be:f3:15:99:9b")
+        assertTrue(bytes.size <= TableBeaconFormat.MAX_PAYLOAD)
+        assertEquals(
+            TableBeaconFormat.Beacon(1, 42, "Testhost", inGame = true, address = "74:BE:F3:15:99:9B"),
+            TableBeaconFormat.decode(bytes),
+        )
+    }
+
+    @Test
+    fun `with an address a long name still fits`() {
+        val bytes = TableBeaconFormat.encode("Elisabeth van den Berg", 0, 7, address = "AA:BB:CC:DD:EE:FF")
+        assertTrue(bytes.size <= TableBeaconFormat.MAX_PAYLOAD)
+        val beacon = TableBeaconFormat.decode(bytes)!!
+        assertEquals("AA:BB:CC:DD:EE:FF", beacon.address)
+        assertTrue("Elisabeth van den Berg".startsWith(beacon.hostName))
+    }
+
+    @Test
+    fun `addresses Android hides or that are not addresses are left out`() {
+        for (bad in listOf("02:00:00:00:00:00", "00:00:00:00:00:00", "nonsense", "AA:BB:CC", "GG:BB:CC:DD:EE:FF")) {
+            assertNull(bad, TableBeaconFormat.decode(TableBeaconFormat.encode("Ivo", 0, 1, address = bad))!!.address)
+        }
+    }
+
+    @Test
+    fun `announcements of the first version are still understood`() {
+        val v1 = byteArrayOf('B'.code.toByte(), 'C'.code.toByte(), 1, 2, 0, 0, 0, 9) + "Ivo".encodeToByteArray()
+        assertEquals(TableBeaconFormat.Beacon(2, 9, "Ivo"), TableBeaconFormat.decode(v1))
+    }
 }

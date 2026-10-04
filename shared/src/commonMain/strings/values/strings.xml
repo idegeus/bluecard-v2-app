@@ -871,4 +871,5 @@
     <string name="car_host">Host</string>
     <string name="car_bot">Bot</string>
     <string name="car_player">Player</string>
+    <string name="host_visible_not_needed">Phones with BlueCard find your table straight away, also without making your phone visible. Only for an older version or a phone that cannot pick up the announcement, make it visible.</string>
 </resources>

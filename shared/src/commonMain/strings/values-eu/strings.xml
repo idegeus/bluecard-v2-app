@@ -871,4 +871,5 @@
     <string name="car_host">Ostalaria</string>
     <string name="car_bot">Bota</string>
     <string name="car_player">Jokalaria</string>
+    <string name="host_visible_not_needed">BlueCard duten telefonoek berehala aurkitzen dute zure mahaia, zure telefonoa ikusgai egon gabe ere. Bertsio zahar baterako edo iragarpena jasotzen ez duen telefono baterako bakarrik: egin ikusgai.</string>
 </resources>

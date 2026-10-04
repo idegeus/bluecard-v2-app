@@ -435,3 +435,31 @@ stapeldikte groeit onder de kaarten in plaats van erboven.
 Alleen in debug-builds en met `ALLOW_ALL_HOSTS_VALIDATOR`, omdat Android Auto geen categorie voor kaartspellen heeft
 (de service gebruikt `category.IOT` om te kunnen draaien).
 
+## 14. Tafels vinden: aankondiging met adres (en de weg naar iOS)
+
+**Waarom het traag was**: een klassieke Bluetooth-zoekactie (inquiry + namen) duurt 12–20 s en de app wachtte die
+af voordat hij de gevonden apparaten één voor één controleerde (RFCOMM + HELLO QUERY, tot 9 s per apparaat). Het
+beginscherm zocht maar elke derde ronde. En een niet-gekoppelde host werd alleen gevonden als hij *zichtbaar* was.
+
+**Nu**:
+* Een app kan zijn eigen Bluetooth-adres niet uitlezen (Android geeft 02:00:00:00:00:00). Daarom stuurt elke
+  telefoon in `Hello.hostAddress` het adres mee waarmee hij de host bereikte; `HostSession.ownAddress` geeft het
+  door, de app bewaart het (`NearbyTableAlerts.ownAddress`).
+* De BLE-aankondiging (`TableBeaconFormat` versie 2: vlaggen *spel bezig* / *adres*, 6 bytes adres, naam ±12 bytes)
+  loopt zolang de telefoon host is, op `ADVERTISE_MODE_BALANCED`. Meldingen alleen voor een open lobby.
+* Zoekers scannen actief (`TableBeaconScanner`, `SCAN_MODE_LOW_LATENCY`) en geven de aankondigingen 3 s voorsprong
+  voordat een zoekactie de radio bezet. Een aankondiging met adres wordt meteen gecontroleerd (beginscherm: meteen
+  getoond); zonder adres start juist een zoekactie.
+* `searchUntilNewPhone`: de zoekactie stopt bij elke nieuwe telefoon, die direct gecontroleerd wordt, en zoekt dan
+  verder. Controles gaan één voor één (`probeLock`).
+* Zichtbaar maken wordt niet meer automatisch gevraagd zodra het eigen adres bekend is (📡 blijft beschikbaar).
+
+**iOS**: iPhones kunnen geen klassieke Bluetooth (RFCOMM) gebruiken (alleen MFi-accessoires), dus Android ↔ iPhone
+kan nooit over de huidige verbinding; iPhone ↔ iPhone loopt via Multipeer. De gemeenschappelijke weg is **BLE**:
+beide kennen L2CAP-kanalen (Android 10+, iOS 11+) — een gewone datastroom waar ons regelprotocol ongewijzigd overheen
+kan. Een iPhone-host kan in zijn aankondiging alleen een service-UUID en naam zetten (geen manufacturer data), dus
+het gezamenlijke profiel wordt: service-UUID in de aankondiging, tafelinfo + L2CAP-PSM in een GATT-kenmerk, daarna
+het L2CAP-kanaal. Android-hosts houden daarnaast de snelle manufacturer data. Het zoekpad van nu (BLE zien → direct
+verbinden) blijft daarbij hetzelfde; alleen de verbinding (RFCOMM → L2CAP) en een CoreBluetooth-transport voor iOS
+komen erbij. Bijkomend voordeel: geen zichtbaar maken en geen klassieke zoekactie meer, ook niet de eerste keer.
+

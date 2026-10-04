@@ -40,7 +40,8 @@ class BlueCardApp : Application() {
 
     /**
      * Tables nearby: listen in the background (re-registered whenever Bluetooth comes on or the setting changes), and
-     * announce our own table while its lobby is open.
+     * announce our own table while we host one (in the lobby for the notification, during a game for those who want
+     * to watch).
      */
     private fun watchNearbyTables() {
         val scope = container.appScope
@@ -53,8 +54,21 @@ class BlueCardApp : Application() {
             @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
             container.sessions.active.flatMapLatest { session ->
                 if (session is ActiveSession.Hosting) {
-                    combine(session.host.lobby, bluetoothOn) { lobby, on ->
-                        if (on && lobby.phase == SessionPhase.LOBBY) lobby.hostName to session.game.id else null
+                    combine(session.host.lobby, bluetoothOn, session.host.ownAddress) { lobby, on, address ->
+                        // A phone that connected told us our own address: from now on the announcement carries it.
+                        address?.let { NearbyTableAlerts.rememberOwnAddress(this@BlueCardApp, it) }
+                        if (!on) {
+                            null
+                        } else {
+                            Announcement(
+                                hostName = lobby.hostName,
+                                gameId = session.game.id,
+                                // Stable for this table, so phones nearby recognise it between rounds.
+                                tableId = System.identityHashCode(session.host),
+                                inGame = lobby.phase != SessionPhase.LOBBY,
+                                address = NearbyTableAlerts.ownAddress(this@BlueCardApp),
+                            )
+                        }
                     }
                 } else {
                     flowOf(null)
@@ -63,9 +77,12 @@ class BlueCardApp : Application() {
                 if (table == null) {
                     NearbyTableAlerts.stopAnnouncing(this@BlueCardApp)
                 } else {
-                    NearbyTableAlerts.startAnnouncing(this@BlueCardApp, table.first, table.second)
+                    NearbyTableAlerts.startAnnouncing(this@BlueCardApp, table.hostName, table.gameId, table.tableId, table.inGame)
                 }
             }
         }
     }
 }
+
+/** What this phone announces about its table (see [NearbyTableAlerts.startAnnouncing]). */
+private data class Announcement(val hostName: String, val gameId: String, val tableId: Int, val inGame: Boolean, val address: String?)

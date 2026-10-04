@@ -915,4 +915,5 @@
     <string name="car_host">Hôte</string>
     <string name="car_bot">Bot</string>
     <string name="car_player">Joueur</string>
+    <string name="host_visible_not_needed">Les téléphones avec BlueCard trouvent votre table tout de suite, même si votre téléphone n’est pas visible. Rendez-le visible seulement pour une ancienne version ou un téléphone qui ne capte pas l’annonce.</string>
 </resources>

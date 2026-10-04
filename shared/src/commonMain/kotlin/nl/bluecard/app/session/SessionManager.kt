@@ -533,6 +533,7 @@ class SessionManager(
         matchLog = matchLog,
         avatar = prefs.avatar,
         asTable = asTable,
+        hostAddress = address,
     )
 
     /** A host for [binding] with the house rules from the settings. */

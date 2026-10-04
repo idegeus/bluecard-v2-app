@@ -30,7 +30,6 @@ import nl.bluecard.app.R
 import nl.bluecard.app.res.Resources
 import nl.bluecard.app.session.GameKind
 import nl.bluecard.app.ui.text.GameTexts
-import kotlin.random.Random
 import nl.bluecard.app.android.R as AndroidR
 
 /**
@@ -54,6 +53,7 @@ object NearbyTableAlerts {
      * it (quietly, at most every [REFRESH_MS]), so it disappears by itself soon after the table closes or starts.
      */
     private const val ALIVE_MS = 2 * 60 * 1000L
+    private const val KEY_OWN_ADDRESS = "own_address"
     private const val REFRESH_MS = 60 * 1000L
 
     // ---------------------------------------------------------------- host: advertise
@@ -61,14 +61,16 @@ object NearbyTableAlerts {
     private var advertising: AdvertiseCallback? = null
 
     @SuppressLint("MissingPermission") // checked in canAdvertise()
-    fun startAnnouncing(context: Context, hostName: String, gameId: String) {
+    fun startAnnouncing(context: Context, hostName: String, gameId: String, tableId: Int, inGame: Boolean) {
         stopAnnouncing(context)
         if (!canAdvertise(context)) return
         val advertiser = context.getSystemService(BluetoothManager::class.java)?.adapter?.bluetoothLeAdvertiser ?: return
         val gameIndex = GameKind.entries.indexOfFirst { it.id == gameId }.coerceAtLeast(0)
-        val payload = TableBeaconFormat.encode(hostName, gameIndex, Random.nextInt())
+        val payload = TableBeaconFormat.encode(hostName, gameIndex, tableId, inGame, ownAddress(context))
         val settings = AdvertiseSettings.Builder()
-            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_POWER)
+            // A few times a second: phones looking for a table see it within a second (the background scan of the
+            // others is low-power anyway). Only while this phone hosts a table.
+            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED)
             .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)
             .setConnectable(false)
             .build()
@@ -103,6 +105,17 @@ object NearbyTableAlerts {
         } catch (e: IllegalStateException) {
             // Bluetooth already off: nothing is being sent.
         }
+    }
+
+    /** This phone's own Bluetooth address, as phones that connected to it reported it (null until one did). */
+    fun ownAddress(context: Context): String? =
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(KEY_OWN_ADDRESS, null)?.takeIf { TableBeaconFormat.parseAddress(it) != null }
+
+    /** Remembers [address] as this phone's own; true when it is new (the announcement should then be renewed). */
+    fun rememberOwnAddress(context: Context, address: String): Boolean {
+        if (TableBeaconFormat.parseAddress(address) == null || address.equals(ownAddress(context), ignoreCase = true)) return false
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit { putString(KEY_OWN_ADDRESS, address.uppercase()) }
+        return true
     }
 
     private fun canAdvertise(context: Context): Boolean =
@@ -163,6 +176,8 @@ object NearbyTableAlerts {
         val now = System.currentTimeMillis()
         for (result in results) {
             val beacon = TableBeaconFormat.decode(result.scanRecord?.getManufacturerSpecificData(TableBeaconFormat.COMPANY_ID)) ?: continue
+            // Only an open lobby is news; a running game is announced for those looking for it (to watch along).
+            if (beacon.inGame) continue
             val key = "seen_${beacon.tableId}"
             val refreshKey = "refresh_${beacon.tableId}"
             val first = now - prefs.getLong(key, 0L) >= SEEN_KEEP_MS

@@ -919,4 +919,5 @@
     <string name="car_host">Host</string>
     <string name="car_bot">Bot</string>
     <string name="car_player">Speler</string>
+    <string name="host_visible_not_needed">Telefoons met BlueCard vinden je tafel meteen, ook zonder dat je telefoon zichtbaar is. Alleen voor een oudere versie of een telefoon die de aankondiging niet oppikt: maak hem zichtbaar.</string>
 </resources>

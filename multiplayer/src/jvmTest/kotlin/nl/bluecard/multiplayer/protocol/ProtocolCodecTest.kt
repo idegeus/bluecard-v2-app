@@ -121,7 +121,7 @@ class ProtocolCodecTest {
         }
         val hello = codec.encode(5, NetMessage.Hello("Anna", "t", HelloIntent.JOIN, "1.0", "dev-a"))
         assertEquals(
-            "{\"v\":2,\"seq\":5,\"msg\":{\"type\":\"HELLO\",\"playerName\":\"Anna\",\"playerToken\":\"t\",\"intent\":\"JOIN\",\"appVersion\":\"1.0\",\"deviceId\":\"dev-a\",\"avatar\":\"\",\"role\":\"PLAYER\"}}",
+            "{\"v\":2,\"seq\":5,\"msg\":{\"type\":\"HELLO\",\"playerName\":\"Anna\",\"playerToken\":\"t\",\"intent\":\"JOIN\",\"appVersion\":\"1.0\",\"deviceId\":\"dev-a\",\"avatar\":\"\",\"role\":\"PLAYER\",\"hostAddress\":\"\"}}",
             hello,
         )
     }

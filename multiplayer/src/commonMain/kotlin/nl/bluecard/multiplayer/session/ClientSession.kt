@@ -65,6 +65,8 @@ class ClientSession<C : Any, S : Any, A : Any, V : Any>(
     private val avatar: String = "",
     /** Join as a table display (see [NetMessage.Hello.ROLE_TABLE]). */
     val asTable: Boolean = false,
+    /** How this phone reaches the host, passed on in the HELLO (see [NetMessage.Hello.hostAddress]). */
+    private val hostAddress: String = "",
     private val clock: () -> Long = { kotlin.time.Clock.System.now().toEpochMilliseconds() },
 ) : PlayerPort<V, A> {
 
@@ -236,7 +238,7 @@ class ClientSession<C : Any, S : Any, A : Any, V : Any>(
         hostDisconnectReason = null
         current = context
         val role = if (asTable) NetMessage.Hello.ROLE_TABLE else NetMessage.Hello.ROLE_PLAYER
-        context.out.trySend(NetMessage.Hello(playerName, playerToken, HelloIntent.JOIN, options.appVersion, deviceId, avatar, role))
+        context.out.trySend(NetMessage.Hello(playerName, playerToken, HelloIntent.JOIN, options.appVersion, deviceId, avatar, role, hostAddress))
         connectionJob = scope.launch {
             runLink(context)
             onLinkEnded(context)

@@ -56,6 +56,11 @@ sealed interface NetMessage {
         val avatar: String = "",
         /** [ROLE_TABLE]: a shared display (tablet in the middle of the table) that only watches, never plays. */
         val role: String = ROLE_PLAYER,
+        /**
+         * The address this phone used to reach the host (e.g. its Bluetooth address). Phones cannot read their own
+         * Bluetooth address, so a host learns it this way and can then announce it, letting others connect directly.
+         */
+        val hostAddress: String = "",
     ) : NetMessage {
         companion object {
             const val ROLE_PLAYER = "PLAYER"

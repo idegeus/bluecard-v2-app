@@ -1,4 +1,4 @@
-# Testrapport — 2–4 oktober 2026 (t/m ronde 8)
+# Testrapport — 2–4 oktober 2026 (t/m ronde 9)
 
 Toestellen: 2× Motorola moto e13 (Android 13 / API 33, 720×1600), beide met Bluetooth-naam "moto e13".
 Builds: debug en release (R8-geminificeerd). De testtelefoons hebben geen internetverbinding; het spel werkt
@@ -189,6 +189,21 @@ Pesten idem, bot-niveau voor alle bots), Android Lint schoon, iOS compileert.
 | Buzz met het scherm van de ontvanger uit: trilling (als meldingstrilling) + melding *"Testhost buzzt je: jouw beurt!"* met buzzergeluid | ✅ (gezien in `dumpsys vibrator_manager`/`notification`) |
 | Meekijker/tafel ✕: tekst was "een bot neemt je plaats over… telt als verloren" | ❌ → ✅ (nu *"Je kijkt mee. Stoppen met kijken?"*) |
 
+### Ronde 9 (4 oktober: tafels sneller vinden)
+
+Gemeten met de testtelefoon als host en de andere als zoeker (tijd tot *"Tafel van Testhost"* in beeld, inclusief
+±1 s meetvertraging van het testscript):
+
+| Situatie | Voor | Na |
+|---|---|---|
+| *Meedoen*, host nog nooit gevonden | 25,9 s (zoekactie 19,5 s, dan pas controleren) | 7,9 s (zoeken stopt bij de eerste telefoon) |
+| *Meedoen*, host eerder gevonden (adres in de aankondiging) | 25,9 s | 4,9 s, zonder zoekactie |
+| Beginscherm *Spellen in de buurt* | tot ±60 s (zoekactie maar elke 3e ronde) | 2,2 s na het openen van de app |
+| Host vraagt om *zichtbaar maken* | elke lobby | alleen zolang zijn adres nog onbekend is |
+
+De host leerde zijn adres van de eerste controle (`own_address` = 74:BE:F3:15:99:9B, klopt). Nieuwe tests:
+aankondiging met adres/lopend spel, lange naam past nog, verborgen/ongeldige adressen weg, versie 1 wordt nog gelezen.
+
 ## Niet op toestel getest
 
 * Android 8–11 (locatiepermissie voor zoeken) — code-pad aanwezig, geen toestel beschikbaar.
@@ -203,6 +218,7 @@ Pesten idem, bot-niveau voor alle bots), Android Lint schoon, iOS compileert.
 * Chat en emoji-reacties tussen twee telefoons tijdens een potje (wel in unit tests); de buzzer wel (ronde 8).
 * Een *late* Vals! op het toestel (na een zet van een ander) en de keuzelijst bij meerdere verdachte zetten — de
   regels zelf zitten in unit tests; op het toestel alleen gezien dat de knop binnen 10 s blijft staan.
+* Een drukke omgeving met veel Bluetooth-apparaten (hier alleen de twee testtelefoons, een laptop en de playtest-telefoon).
 * **Android Auto**: geen Android Auto-app op de testtelefoons en geen autoscherm-emulator (DHU) op deze Mac; alleen
   gecompileerd. Testen: Android Auto installeren, ontwikkelaarsmodus + *Onbekende bronnen*, debug-build.
 * *Spel starten* zonder Bluetooth-toestemming / met Bluetooth uit (alleen-bots-tafel met *Toestaan*): de toestemming

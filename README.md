@@ -92,7 +92,9 @@ voor anderen.
 
 **Via Bluetooth:**
 
-1. Host: *Spel starten*. De telefoon vraagt om 5 minuten zichtbaar te worden — tik *Toestaan*.
+1. Host: *Spel starten*. De allereerste keer vraagt de telefoon om 5 minuten zichtbaar te worden — tik *Toestaan*.
+   Daarna niet meer: de eerste telefoon die verbindt vertelt de host zijn eigen Bluetooth-adres (een app kan dat zelf
+   niet uitlezen) en vanaf dan zit dat adres in de BLE-aankondiging van de tafel, zodat anderen direct verbinden.
    Optioneel: spel kiezen, bots toevoegen, huisregels aanpassen.
 2. Anderen: *Meedoen met een spel* (of direct in *Spellen in de buurt* op het beginscherm). Een balk laat zien wat
    er gebeurt (*telefoons zoeken → tafels bekijken → blijven kijken*) en loopt in 90 s af. De app zoekt telefoons in de buurt en vraagt elk apparaat of er een spel
@@ -102,6 +104,11 @@ voor anderen.
 
 Tafels in de buurt verschijnen ook vanzelf op het **beginscherm** (*Spellen in de buurt*, met *Meedoen*/*Kijk mee*):
 de telefoon blijft zoeken zolang het beginscherm open is, dus opent iemand een tafel, dan staat die er zo.
+
+**Hoe snel een tafel gevonden wordt** (gemeten op twee Moto e13's): een host die al eens gevonden is, staat binnen
+±2 s op het beginscherm en binnen ±5 s op *Meedoen* (BLE-aankondiging met adres, geen Bluetooth-zoekactie). Een host
+die nog nooit gevonden is: ±8 s (de zoekactie stopt bij elke nieuwe telefoon om die meteen te controleren, in plaats
+van eerst 20 s te zoeken). Voorheen 25 s tot een minuut.
 
 Valt een verbinding weg, dan probeert de client automatisch opnieuw te verbinden (4 pogingen) en krijgt hij
 zijn plek en kaarten terug. Lukt dat niet binnen 60 seconden, dan speelt een bot verder voor die speler
@@ -160,8 +167,9 @@ automatisch het spel van de host.
 * **Buzzer**: staat iemand 5 s stil terwijl hij aan de beurt is, dan verschijnt er bij de anderen een 🔔 bovenin;
   daarmee schudt zijn scherm en trilt zijn telefoon — ook met het scherm uit in de broekzak: dan komt de buzz als
   melding met trilpatroon en buzzergeluid (eigen meldingskanaal *Buzzer*). Max. 3× per minuut per persoon (host controleert, ook de 5 s).
-* **Melding "tafel in de buurt"** (Android): zolang een lobby open is zendt de host een klein BLE-signaal uit
-  (laagste stroomstand, niet verbindbaar, met naam en spel). Andere telefoons hebben één *gefilterd* achtergrond-scan
+* **Melding "tafel in de buurt"** (Android): zolang de host een tafel heeft zendt hij een klein BLE-signaal uit
+  (niet verbindbaar, met naam, spel, of er gespeeld wordt en — zodra bekend — zijn Bluetooth-adres; een melding komt
+  alleen voor een open lobby). Andere telefoons hebben één *gefilterd* achtergrond-scan
   bij Android geregistreerd: de Bluetooth-chip zelf luistert, de app draait niet en wordt alleen gewekt bij een tafel,
   en toont dan één melding (*"Ivo heeft een tafel geopend — Zweeds Pesten · tik om mee te doen"*). Tik je erop, dan
   opent BlueCard, zoekt die tafel en doe je meteen mee in de lobby; een aflopende balk laat zien hoe lang er nog

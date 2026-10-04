@@ -1,5 +1,11 @@
 package nl.bluecard.app.ui.screens
 
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.sync.Mutex
+import nl.bluecard.app.bluetooth.announcedDevice
+import nl.bluecard.app.bluetooth.searchUntilNewPhone
+import nl.bluecard.app.bluetooth.SearchEnd
 import nl.bluecard.app.platform.nowMillis
 
 import nl.bluecard.app.bluetooth
@@ -108,14 +114,43 @@ class JoinViewModel(private val container: AppContainer) : ViewModel() {
             _ui.update {
                 it.copy(scanPhase = ScanPhase.SCANNING, devices = bonded, joinError = null, searchStartedAt = started, searchEndsAt = endsAt)
             }
+            // Tables that announce themselves with their address are checked the moment they are seen (also while
+            // searching: the check stops the search for a moment).
+            val announced = launch {
+                container.bluetooth.announcedTables().collect { beacons ->
+                    val fresh = beacons.mapNotNull { beacon ->
+                        val address = beacon.address ?: return@mapNotNull null
+                        val known = _ui.value.devices.firstOrNull { it.device.address == address }
+                        if (known != null && known.probe != ProbeState.UNKNOWN) return@mapNotNull null
+                        known ?: FoundDevice(announcedDevice(address, beacon.hostName))
+                    }
+                    if (fresh.isEmpty()) return@collect
+                    _ui.update { state -> state.copy(devices = state.devices.filter { d -> fresh.none { it.device.address == d.device.address } } + fresh) }
+                    container.bluetooth.cancelDiscovery()
+                    probe(fresh)
+                }
+            }
             try {
-                val failed = discover()
-                if (failed && _ui.value.devices.isEmpty()) {
-                    _ui.update { it.copy(scanPhase = ScanPhase.FAILED) }
+                // A Bluetooth search drowns out the announcements, so give those a moment first: a host that
+                // announces its address is usually seen (and checked) within a second or two.
+                withTimeoutOrNull(ANNOUNCE_HEAD_START_MS) { _ui.first { state -> state.games.isNotEmpty() } }
+                if (_ui.value.games.isNotEmpty()) {
+                    _ui.update { it.copy(scanPhase = ScanPhase.DONE) }
                     return@launch
                 }
-                _ui.update { it.copy(scanPhase = ScanPhase.PROBING) }
-                probe(_ui.value.devices.filter { it.device.canHostGame })
+                // Search and check in turns: the search stops at each new phone, which is checked at once.
+                var end: SearchEnd
+                do {
+                    end = discover()
+                    if (end == SearchEnd.FAILED && _ui.value.devices.isEmpty()) {
+                        _ui.update { it.copy(scanPhase = ScanPhase.FAILED) }
+                        return@launch
+                    }
+                    _ui.update { it.copy(scanPhase = ScanPhase.PROBING) }
+                    probe(_ui.value.devices.filter { it.device.canHostGame && it.probe == ProbeState.UNKNOWN })
+                    if (_ui.value.games.isNotEmpty()) break
+                    _ui.update { it.copy(scanPhase = ScanPhase.SCANNING) }
+                } while (end == SearchEnd.STOPPED_AT_NEW_PHONE && nowMillis() < endsAt)
                 // Someone may open a table just after we looked (or a first attempt failed): keep looking until the
                 // search window is over, quietly, until a table shows up or we connect.
                 _ui.update { it.copy(scanPhase = ScanPhase.DONE, watching = true) }
@@ -125,64 +160,62 @@ class JoinViewModel(private val container: AppContainer) : ViewModel() {
                     delay(RECHECK_INTERVAL_MS)
                     // A phone that just opened a table becomes visible: search again now and then.
                     if (round++ % REDISCOVER_EVERY == REDISCOVER_EVERY - 1) {
-                        val known = _ui.value.devices.map { it.device.address }.toSet()
                         discover()
-                        probe(_ui.value.devices.filter { it.device.canHostGame && it.device.address !in known })
+                        probe(_ui.value.devices.filter { it.device.canHostGame && it.probe == ProbeState.UNKNOWN })
                     }
                     probe(_ui.value.devices.filter { it.device.canHostGame && it.device.isPhone && it.probe == ProbeState.NO_GAME })
                 }
             } finally {
+                announced.cancel()
                 _ui.update { it.copy(watching = false, searchStartedAt = 0L, searchEndsAt = 0L) }
             }
         }
     }
 
-    /** Runs one Bluetooth discovery and merges what it finds into the device list. Returns true when it failed. */
-    private suspend fun discover(): Boolean {
-        var failed = false
-        container.bluetooth.discover().collect { event ->
-            when (event) {
-                is DiscoveryEvent.Found -> _ui.update { state ->
-                    if (state.devices.any { it.device.address == event.device.address }) {
-                        state.copy(
-                            devices = state.devices.map {
-                                if (it.device.address == event.device.address) {
-                                    it.copy(
-                                        device = event.device.copy(
-                                            name = event.device.name ?: it.device.name,
-                                            bonded = it.device.bonded || event.device.bonded,
-                                        ),
-                                    )
-                                } else {
-                                    it
-                                }
-                            },
-                        )
-                    } else {
-                        state.copy(devices = state.devices + FoundDevice(event.device))
-                    }
+    /**
+     * Runs a Bluetooth search and merges what it finds into the device list; it stops at the first new phone so that
+     * one is checked straight away (see [searchUntilNewPhone]).
+     */
+    private suspend fun discover(): SearchEnd = container.bluetooth.searchUntilNewPhone(
+        onFound = { device ->
+            _ui.update { state ->
+                if (state.devices.any { it.device.address == device.address }) {
+                    state.copy(
+                        devices = state.devices.map {
+                            if (it.device.address == device.address) {
+                                it.copy(device = device.copy(name = device.name ?: it.device.name, bonded = it.device.bonded || device.bonded))
+                            } else {
+                                it
+                            }
+                        },
+                    )
+                } else {
+                    state.copy(devices = state.devices + FoundDevice(device))
                 }
-                DiscoveryEvent.Finished -> Unit
-                is DiscoveryEvent.Failed -> failed = true
             }
-        }
-        return failed
-    }
+        },
+        isNew = { device -> _ui.value.devices.none { it.device.address == device.address && it.probe != ProbeState.UNKNOWN } },
+    )
 
-    private suspend fun probe(devices: List<FoundDevice>) {
+    /** One check at a time: two Bluetooth connections being set up at once make both fail. */
+    private val probeLock = Mutex()
+
+    private suspend fun probe(devices: List<FoundDevice>) = probeLock.withLock {
         val settings = container.settingsRepository.ensureToken()
         // Phones in range first; paired-only devices may be far away and take a page timeout each.
         val order = devices
             .sortedWith(compareBy({ !it.device.isPhone }, { it.device.bonded }))
             .map { it.device.address }
         for (address in order) {
+            // Found meanwhile by the other check (announcement or search): no need to ask again.
+            if (_ui.value.devices.any { it.device.address == address && it.probe == ProbeState.GAME }) continue
             setProbe(address, ProbeState.PROBING, null)
             probeInFlight = true
             val result = try {
                 withTimeoutOrNull(PROBE_TIMEOUT_MS) {
                     try {
                         val link = container.bluetooth.connect(address)
-                        LobbyProbe.query(link, settings.displayName, settings.playerToken)
+                        LobbyProbe.query(link, settings.displayName, settings.playerToken, hostAddress = address)
                     } catch (e: IOException) {
                         ProbeResult.NoGame(e.message ?: "io")
                     }
@@ -235,7 +268,7 @@ class JoinViewModel(private val container: AppContainer) : ViewModel() {
         val settings = container.settingsRepository.ensureToken()
         val result = withTimeoutOrNull(PROBE_TIMEOUT_MS) {
             try {
-                LobbyProbe.query(container.bluetooth.connect(address), settings.displayName, settings.playerToken)
+                LobbyProbe.query(container.bluetooth.connect(address), settings.displayName, settings.playerToken, hostAddress = address)
             } catch (e: IOException) {
                 null
             }
@@ -271,6 +304,9 @@ class JoinViewModel(private val container: AppContainer) : ViewModel() {
         const val RECHECK_INTERVAL_MS = 5_000L
         /** How long one search lasts: discovery, checking the phones found, then watching for new tables. */
         const val SEARCH_WINDOW_MS = 90_000L
+
+        /** How long the BLE announcements get before the (radio-hogging) Bluetooth search starts. */
+        const val ANNOUNCE_HEAD_START_MS = 3_000L
         const val REDISCOVER_EVERY = 3
     }
 }

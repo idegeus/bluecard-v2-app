@@ -915,4 +915,5 @@
     <string name="car_host">Amfitrió</string>
     <string name="car_bot">Bot</string>
     <string name="car_player">Jugador</string>
+    <string name="host_visible_not_needed">Els mòbils amb BlueCard troben la teva taula de seguida, encara que el teu mòbil no sigui visible. Només per a una versió antiga o un mòbil que no capti l’avís: fes-lo visible.</string>
 </resources>

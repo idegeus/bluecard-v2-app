@@ -87,6 +87,11 @@ class HostSession<C : Any, S : Any, A : Any, V : Any>(
     private val json = ProtocolJson.json
     private val lock = Mutex()
 
+    private val _ownAddress = MutableStateFlow<String?>(null)
+
+    /** This host's own address as the phones that connected (or asked for the lobby) used it; null until one did. */
+    val ownAddress: StateFlow<String?> = _ownAddress.asStateFlow()
+
     val gameHost = GameHost(module, scope, { options.botDelayMs }, log = log, clock = clock)
 
     private var config: C = initialConfig
@@ -545,6 +550,7 @@ class HostSession<C : Any, S : Any, A : Any, V : Any>(
     }
 
     private suspend fun handleHello(conn: Connection, hello: NetMessage.Hello) = lock.withLock {
+        if (hello.hostAddress.isNotBlank()) _ownAddress.value = hello.hostAddress
         if (conn.seatId != null) {
             conn.send(NetMessage.Error(ErrorCode.UNEXPECTED, "already joined"))
             return@withLock

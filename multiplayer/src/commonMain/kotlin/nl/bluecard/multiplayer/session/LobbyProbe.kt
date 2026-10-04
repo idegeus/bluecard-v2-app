@@ -23,11 +23,12 @@ sealed interface ProbeResult {
  */
 object LobbyProbe {
 
-    suspend fun query(link: Link, playerName: String, playerToken: String, timeoutMs: Long = 6_000): ProbeResult {
+    /** [hostAddress]: the address used to reach the host, so it learns its own (see [NetMessage.Hello.hostAddress]). */
+    suspend fun query(link: Link, playerName: String, playerToken: String, timeoutMs: Long = 6_000, hostAddress: String = ""): ProbeResult {
         val codec = ProtocolCodec()
         return try {
             withTimeout(timeoutMs) {
-                link.writeLine(codec.encode(1, NetMessage.Hello(playerName, playerToken, HelloIntent.QUERY)))
+                link.writeLine(codec.encode(1, NetMessage.Hello(playerName, playerToken, HelloIntent.QUERY, hostAddress = hostAddress)))
                 var result: ProbeResult = ProbeResult.NoGame("no answer")
                 for (i in 0 until MAX_MESSAGES) {
                     val line = link.readLine() ?: break

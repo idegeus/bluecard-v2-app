@@ -67,8 +67,12 @@ fun BluetoothVisibilityPanel() {
         }
     }
 
+    // Once phones have reached this host, its announcement carries its address and others connect without a search:
+    // then being visible is no longer needed and we don't ask.
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val announcesAddress = remember { nl.bluecard.app.nearby.NearbyTableAlerts.ownAddress(context) != null }
     LaunchedEffect(Unit) {
-        if (!askedVisible && bluetooth.visibleUntil.value <= nowMillis()) {
+        if (!announcesAddress && !askedVisible && bluetooth.visibleUntil.value <= nowMillis()) {
             askedVisible = true
             requestVisible()
         }
@@ -84,13 +88,17 @@ fun BluetoothVisibilityPanel() {
                 icon = { Icon(painterResource(R.drawable.ic_bluetooth), contentDescription = null, tint = TableColors.Highlight) },
             )
         } else {
-            Text(stringResource(R.string.host_visible_detail), color = TableColors.OnFeltMuted, style = MaterialTheme.typography.bodyMedium)
+            Text(
+                stringResource(if (announcesAddress) R.string.host_visible_not_needed else R.string.host_visible_detail),
+                color = TableColors.OnFeltMuted,
+                style = MaterialTheme.typography.bodyMedium,
+            )
             FeltSecondaryButton(
                 stringResource(R.string.host_visible),
                 onClick = ::requestVisible,
                 iconContent = { Icon(painterResource(R.drawable.ic_bluetooth), contentDescription = null, modifier = Modifier.size(20.dp)) },
             )
-            if (visibilityDenied) {
+            if (visibilityDenied && !announcesAddress) {
                 Text(stringResource(R.string.host_visible_denied), color = TableColors.OnFeltMuted, style = MaterialTheme.typography.bodySmall)
             }
         }

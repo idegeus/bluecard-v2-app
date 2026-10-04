@@ -871,4 +871,5 @@
     <string name="car_host">Host</string>
     <string name="car_bot">Bot</string>
     <string name="car_player">Spieler</string>
+    <string name="host_visible_not_needed">Handys mit BlueCard finden deinen Tisch sofort, auch wenn dein Handy nicht sichtbar ist. Nur für eine ältere Version oder ein Handy, das die Ankündigung nicht empfängt: sichtbar machen.</string>
 </resources>
