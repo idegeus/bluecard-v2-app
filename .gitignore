@@ -1,0 +1,21 @@
+*.iml
+.gradle/
+/local.properties
+.idea/
+.DS_Store
+build/
+/captures
+.externalNativeBuild
+.cxx
+.kotlin/
+dist/
+
+# iOS (Xcode)
+iosApp/**/xcuserdata/
+iosApp/build/
+
+# Signing keys and secrets never go into git
+*.jks
+*.keystore
+*.p12
+keystore.properties

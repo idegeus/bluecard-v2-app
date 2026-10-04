@@ -1,0 +1,922 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BlueCard</string>
+    <string name="game_zweeds_pesten">Zweeds Pesten</string>
+
+    <!-- Common -->
+    <string name="back">Terug</string>
+    <string name="cancel">Annuleren</string>
+    <string name="ok">OK</string>
+    <string name="yes_leave">Ja, verlaten</string>
+    <string name="retry">Opnieuw proberen</string>
+    <string name="open_settings">Open instellingen</string>
+    <string name="you">jij</string>
+    <string name="you_suffix">%1$s (jij)</string>
+
+    <!-- Menu -->
+    <string name="menu_play_bots">Spelen tegen bots</string>
+    <string name="menu_bluetooth">Bluetooth spel</string>
+    <string name="menu_rules">Spelregels</string>
+    <string name="menu_settings">Instellingen</string>
+    <string name="menu_continue">Doorgaan met spel</string>
+    <string name="menu_continue_detail">Je vorige spel tegen de bots is bewaard</string>
+    <string name="menu_return">Terug naar lopend spel</string>
+    <string name="menu_return_detail">Je spel is nog actief</string>
+    <string name="menu_continue_failed">Het bewaarde spel kon niet worden geladen</string>
+    <string name="menu_offline_note">Speelt volledig offline · geen account</string>
+    <string name="menu_hello">Hallo %1$s!</string>
+
+    <!-- Bot setup -->
+    <string name="bots_title">Spelen tegen bots</string>
+    <string name="bots_count">Aantal bots</string>
+    <string name="bots_difficulty">Moeilijkheid</string>
+    <string name="difficulty_easy">Makkelijk</string>
+    <string name="difficulty_normal">Normaal</string>
+    <string name="bots_change_rules">Regels aanpassen</string>
+    <string name="bots_start">Start spel</string>
+    <string name="bots_start_failed">Kan het spel niet starten: %1$s</string>
+    <string name="bots_overwrite_warning">Je bewaarde spel wordt vervangen.</string>
+
+    <!-- Bluetooth entry -->
+    <string name="bt_your_name">Jouw naam</string>
+    <string name="bt_host">Spel aanmaken</string>
+    <string name="bt_host_detail">Jij bent de host: anderen zoeken en verbinden met jouw telefoon</string>
+    <string name="bt_join">Meedoen met spel</string>
+    <string name="bt_join_detail">Zoek een telefoon in de buurt die een spel heeft aangemaakt</string>
+    <string name="bt_not_supported">Deze telefoon heeft geen Bluetooth. Je kunt wel tegen bots spelen.</string>
+    <string name="bt_disabled">Bluetooth staat uit.</string>
+    <string name="bt_enable_denied">Bluetooth is nodig om samen te spelen.</string>
+    <string name="bt_permission_denied">Zonder deze toestemming kan er niet via Bluetooth gespeeld worden. Je kunt de toestemming geven via de app-instellingen.</string>
+    <string name="bt_location_needed">Op deze Android-versie is toestemming voor locatie nodig om Bluetooth-apparaten te kunnen vinden. BlueCard gebruikt je locatie niet.</string>
+
+    <!-- Host lobby -->
+    <string name="host_title">Jouw spel</string>
+    <string name="bt_header">Samen aan tafel</string>
+    <string name="join_header">Zoek een tafel</string>
+    <string name="join_table_of">Tafel van %1$s</string>
+    <string name="lobby_table">Aan tafel</string>
+    <string name="lobby_free_seat">Vrije plek</string>
+    <string name="lobby_visibility">Bluetooth</string>
+    <string name="lobby_chip_multiple">Meerdere tegelijk</string>
+    <string name="lobby_rules_title">Spelregels</string>
+    <string name="host_waiting">Wachten op spelers…</string>
+    <string name="host_not_accepting">Er kunnen nu geen spelers verbinden.</string>
+    <string name="host_restart_accepting">Opnieuw openstellen</string>
+    <string name="host_visible">Zichtbaar maken</string>
+    <string name="host_visible_detail">Andere telefoons kunnen jouw telefoon alleen vinden als hij zichtbaar is. Gekoppelde telefoons vinden je altijd.</string>
+    <string name="host_visible_on">Zichtbaar voor andere telefoons (%1$d min)</string>
+    <string name="host_visible_denied">Niet zichtbaar gemaakt. Spelers die al gekoppeld zijn kunnen je wel vinden.</string>
+    <string name="host_device_name">Jouw Bluetooth-naam: %1$s</string>
+    <string name="host_add_bot">Bot toevoegen</string>
+    <string name="host_remove">Verwijderen</string>
+    <string name="host_start">Start spel</string>
+    <string name="host_leave_title">Spel opheffen?</string>
+    <string name="host_server_failed">Kan geen Bluetooth-spel openen: %1$s</string>
+
+    <string name="seat_host">Host</string>
+    <string name="seat_bot">Bot · %1$s</string>
+    <string name="seat_remote">Via Bluetooth</string>
+    <string name="seat_disconnected">Verbinding verbroken</string>
+    <string name="seat_bot_takeover">Bot speelt mee</string>
+
+    <!-- Join -->
+    <string name="join_title">Meedoen</string>
+    <string name="join_scan">Zoeken naar spellen</string>
+    <string name="join_scanning">Zoeken naar telefoons in de buurt…</string>
+    <string name="join_probing">Controleren welke telefoons een spel hebben…</string>
+    <string name="join_found_games">Gevonden spellen</string>
+    <string name="join_no_games">Nog geen spellen gevonden. Zorg dat de host een spel heeft aangemaakt en zoek opnieuw.</string>
+    <string name="join_no_games_watching">Nog geen spellen gevonden. We blijven nog even kijken: maakt iemand nu een spel aan, dan verschijnt het hier vanzelf.</string>
+    <string name="join_other_devices">Telefoons in de buurt</string>
+    <string name="join_other_devices_hint">Zie je de tafel niet bij de gevonden spellen? Je kunt ook direct met een telefoon verbinden.</string>
+    <string name="join_checking">controleren…</string>
+    <string name="join_no_game_yet">nog geen spel</string>
+    <string name="join_try">Verbinden</string>
+    <string name="join_phase_lobby">wacht op spelers</string>
+    <string name="join_phase_game">spel bezig</string>
+    <string name="join_incompatible">Andere app-versie</string>
+    <string name="join_connect">Meedoen</string>
+    <string name="join_connecting">Verbinden met %1$s…</string>
+    <string name="join_connected">Verbonden met %1$s</string>
+    <string name="join_waiting_host">Wachten tot de host het spel start…</string>
+    <string name="join_leave">Verlaten</string>
+    <string name="join_failed">Verbinden mislukt. Staat het spel op de andere telefoon nog open?</string>
+    <string name="join_scan_failed">Zoeken naar apparaten is niet gelukt. Staat Bluetooth aan?</string>
+    <string name="join_bonded">gekoppeld</string>
+    <string name="join_unknown_device">Onbekend apparaat</string>
+
+    <!-- Connection / rejection -->
+    <string name="reject_LOBBY_FULL">Het spel zit vol.</string>
+    <string name="reject_GAME_IN_PROGRESS">Dit spel is al begonnen.</string>
+    <string name="reject_VERSION_MISMATCH">De andere telefoon heeft een andere versie van BlueCard. Werk beide apps bij.</string>
+    <string name="reject_HOST_CLOSING">De host sluit het spel.</string>
+    <string name="reject_generic">Verbinding geweigerd (%1$s).</string>
+    <string name="conn_reconnecting">Verbinding verbroken — opnieuw verbinden (%1$d/%2$d)…</string>
+    <string name="conn_lost">Verbinding met de host is verbroken.</string>
+    <string name="conn_host_closed">De host heeft het spel beëindigd.</string>
+    <string name="conn_kicked">De host heeft je uit het spel verwijderd.</string>
+    <string name="conn_left">Je hebt het spel verlaten.</string>
+    <string name="conn_reconnect">Opnieuw verbinden</string>
+    <string name="conn_bluetooth_off">Bluetooth is uitgezet. Zet Bluetooth aan om verder te spelen.</string>
+
+    <!-- Notices -->
+    <string name="notice_joined">%1$s doet mee</string>
+    <string name="notice_left">%1$s is vertrokken</string>
+    <string name="notice_disconnected">Verbinding met %1$s verbroken</string>
+    <string name="notice_reconnected">%1$s is weer verbonden</string>
+    <string name="notice_bot_took_over">Een bot speelt verder voor %1$s</string>
+    <string name="notice_protocol">Onleesbaar bericht ontvangen en genegeerd</string>
+    <string name="notice_accepting_stopped">Nieuwe verbindingen zijn gestopt: %1$s</string>
+
+    <!-- Game screen -->
+    <string name="game_your_turn">Jij bent aan de beurt!</string>
+    <string name="game_waiting_for">%1$s is aan de beurt…</string>
+    <string name="game_swap_phase">Ruilfase</string>
+    <string name="game_swap_waiting">Wachten tot iedereen klaar is…</string>
+    <string name="game_ready">Klaar</string>
+    <string name="game_play_count">Speel %1$d</string>
+    <string name="game_pick_up">Pak stapel (%1$d)</string>
+    <string name="game_gamble">Gok van stapel</string>
+    <string name="game_select_blind">Veeg of tik een blinde kaart</string>
+    <string name="game_must_pick_up">Je kunt niets spelen: pak de stapel</string>
+    <string name="game_draw_pile">Trekstapel</string>
+    <string name="game_burned">Verbrand</string>
+    <string name="game_requirement_any">Alles mag</string>
+    <string name="game_requirement_min">%1$s of hoger</string>
+    <string name="game_requirement_max">%1$s of lager</string>
+    <string name="game_challenge">Vals!</string>
+    <string name="log_tab_history">Verloop</string>
+    <string name="conn_game_switched">De host kiest een ander spel; opnieuw verbinden…</string>
+    <string name="join_rejoining">%1$s koos een ander spel. Opnieuw verbinden…</string>
+    <string name="result_to_lobby_with">Naar de lobby met %1$s</string>
+    <string name="settings_language">Taal</string>
+    <string name="lang_system">Systeem</string>
+    <string name="rank_JACK">B</string>
+    <string name="rank_QUEEN">V</string>
+    <string name="rank_KING">H</string>
+    <string name="rank_ACE">A</string>
+    <string name="rank_JOKER">Joker</string>
+    <string name="speech_JACK">boer</string>
+    <string name="speech_QUEEN">vrouw</string>
+    <string name="speech_KING">heer</string>
+    <string name="speech_ACE">aas</string>
+    <string name="speech_suit_CLUBS">klaveren</string>
+    <string name="speech_suit_DIAMONDS">ruiten</string>
+    <string name="speech_suit_HEARTS">harten</string>
+    <string name="speech_suit_SPADES">schoppen</string>
+    <string name="speech_card">%1$s %2$s</string>
+    <string name="speech_joker_red">rode joker</string>
+    <string name="speech_joker_black">zwarte joker</string>
+    <string name="avatar_title">Avatar</string>
+    <string name="avatar_photo">Foto kiezen</string>
+    <string name="avatar_reset">Standaard</string>
+    <string name="hr_winner_swap">Winnaar ruilt met de pestkop</string>
+    <string name="hr_winner_swap_detail">In het volgende potje geeft de winnaar de verliezer een kaart naar keuze en krijgt hij daarvoor de beste kaart van de verliezer.</string>
+    <string name="game_give_card">Geef %1$s een kaart: tik er een aan</string>
+    <string name="game_exchanging">%1$s ruilt een kaart met %2$s</string>
+    <string name="ev_exchanged">%1$s ruilde een kaart met %2$s</string>
+    <string name="err_EXCHANGE_PENDING">Eerst ruilt de winnaar een kaart met de pestkop.</string>
+    <string name="err_NOT_THE_WINNER">Alleen de winnaar kiest welke kaart er geruild wordt.</string>
+    <string name="lobby_move_up">Eerder aan de beurt</string>
+    <string name="lobby_move_down">Later aan de beurt</string>
+    <string name="callout_cheat">VALS!</string>
+    <string name="callout_false_alarm">ONTERECHT!</string>
+    <string name="callout_forgot">VERGETEN!</string>
+    <string name="game_staged_hint">Nog een %1$s? Veeg hem erbij</string>
+    <string name="game_staged_back">Terug</string>
+    <string name="game_only_same_rank">Alleen kaarten van dezelfde waarde erbij</string>
+    <string name="game_blind_card">Blinde kaart %1$d</string>
+    <string name="game_finished_position">#%1$d</string>
+    <string name="game_leave">Spel verlaten</string>
+    <string name="game_leave_local">Je spel wordt bewaard. Je kunt later verder spelen via het hoofdmenu.</string>
+    <string name="game_resign">Opgeven</string>
+    <string name="game_stop_title">Stoppen?</string>
+    <string name="game_resign_local">Opgeven: je stopt dit potje en eindigt als laatste.</string>
+    <string name="game_resign_host">Opgeven: een bot neemt jouw plaats over en de anderen spelen door; jij kijkt mee. Dit telt als verloren.</string>
+    <string name="game_resign_client">Een bot neemt jouw plaats over en de anderen spelen door. Dit telt als verloren.</string>
+    <string name="game_bot_plays_for_you">Je hebt opgegeven: een bot speelt voor jou</string>
+    <string name="ev_resigned">%1$s geeft op</string>
+    <string name="game_no_session">Er is geen actief spel meer.</string>
+    <string name="game_to_menu">Naar hoofdmenu</string>
+    <string name="game_take_over">Laat bot spelen</string>
+    <string name="game_direction_cw">Richting: met de klok mee</string>
+    <string name="game_direction_ccw">Richting: tegen de klok in</string>
+    <string name="game_loading">Spel laden…</string>
+    <string name="game_effects">Speciale kaarten</string>
+    <string name="game_you_finished">Je bent uit! Plaats %1$d</string>
+
+    <!-- Result -->
+    <string name="result_title">Spel afgelopen</string>
+    <string name="result_winner">%1$s wint!</string>
+    <string name="result_you_won">Jij wint!</string>
+    <string name="result_standings">Eindstand</string>
+    <string name="result_loser">Pestkop</string>
+    <string name="result_play_again">Opnieuw spelen</string>
+    <string name="result_to_lobby">Terug naar lobby</string>
+    <string name="result_to_menu">Terug naar menu</string>
+    <string name="result_wait_host">Wachten tot de host een nieuw spel start…</string>
+
+    <!-- Rules screen -->
+    <string name="rules_title">Spelregels</string>
+    <string name="rules_goal">Raak als eerste al je kaarten kwijt. Wie als laatste overblijft is de Stinkvis.</string>
+    <string name="rules_setup_title">Opzet</string>
+    <string name="rules_setup">Iedere speler krijgt 3 blinde kaarten, daarop 3 open kaarten, en daarnaast een hand van %1$d. De overige kaarten vormen de trekstapel.</string>
+    <string name="rules_swap_title">Ruilen</string>
+    <string name="rules_swap">Voordat het spel begint mag je handkaarten ruilen met je open kaarten. Leg sterke kaarten (zoals 2 en 10) open: die heb je aan het eind hard nodig.</string>
+    <string name="rules_turn_title">Je beurt</string>
+    <string name="rules_turn">Speel een kaart die gelijk is aan of hoger dan de bovenste kaart van de aflegstapel. Na het spelen trek je van de trekstapel tot je hand weer vol is (%1$d). Aas is de hoogste kaart.</string>
+    <string name="rules_multiple">Je mag meerdere kaarten van dezelfde waarde tegelijk spelen.</string>
+    <string name="rules_pickup_title">Kun je niet?</string>
+    <string name="rules_pickup">Kun je niets spelen, dan pak je de hele aflegstapel. Dat is de straf. Je mag de stapel ook altijd pakken als je wél kunt spelen. Daarna is de volgende speler aan de beurt.</string>
+    <string name="rules_table_title">Open en blinde kaarten</string>
+    <string name="rules_table">Is je hand leeg en de trekstapel op, dan speel je met de open kaarten op tafel. Daarna je blinde kaarten: je draait er één om. Past hij, dan is hij gespeeld; past hij niet, dan pak je de stapel plus die kaart.</string>
+    <string name="rules_special_title">Speciale kaarten (huidige regels)</string>
+    <string name="rules_four_of_kind">Vier dezelfde kaarten achter elkaar op de stapel verbranden de stapel.</string>
+    <string name="rules_burn_extra">Na het verbranden van de stapel ben je nog een keer aan de beurt.</string>
+    <string name="rules_gamble">Gokken: je mag de bovenste kaart van de trekstapel omdraaien. Past hij, dan is hij gespeeld; anders pak je de stapel.</string>
+    <string name="rules_reshuffle">Is de trekstapel op, dan worden de verbrande kaarten geschud tot een nieuwe trekstapel.</string>
+    <string name="rules_end_title">Einde</string>
+    <string name="rules_end_last">Er wordt doorgespeeld tot er nog één speler kaarten heeft: de pestkop.</string>
+    <string name="rules_end_first">Het spel stopt zodra de eerste speler uit is. De rest wordt gerangschikt op het aantal kaarten.</string>
+    <string name="rules_app_title">In de app</string>
+    <string name="rules_app">Kaarten die je mag spelen worden opgelicht. Veeg een kaart omhoog naar de stapel om hem te spelen; wil je meerdere kaarten van dezelfde waarde tegelijk spelen, tik ze dan eerst aan. Trek de aflegstapel naar je toe om hem te pakken. De app controleert iedere zet; ongeldige zetten zijn niet mogelijk.</string>
+
+    <!-- Effects -->
+    <string name="effect_NONE">Gewoon</string>
+    <string name="effect_RESET">Reset: altijd speelbaar, daarna mag alles</string>
+    <string name="effect_LOWER">Lager: volgende speler speelt deze waarde of lager (ook geen 10)</string>
+    <string name="effect_LOWER_strict">Lager: volgende speler speelt lager (ook geen 10)</string>
+    <string name="effect_BURN">Verbranden: op alles behalve na een lager-kaart, stapel gaat weg</string>
+    <string name="effect_SKIP">Overslaan: volgende speler slaat een beurt over</string>
+    <string name="effect_REVERSE">Draaien: speelrichting draait om</string>
+    <string name="effect_short_NONE">Gewoon</string>
+    <string name="effect_short_RESET">Reset</string>
+    <string name="effect_short_LOWER">Lager</string>
+    <string name="effect_short_BURN">Verbranden</string>
+    <string name="effect_short_SKIP">Overslaan</string>
+    <string name="effect_short_REVERSE">Draaien</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_player">Speler</string>
+    <string name="settings_name">Naam</string>
+    <string name="settings_gameplay">Spel</string>
+    <string name="settings_bot_speed">Snelheid van bots</string>
+    <string name="speed_SLOW">Rustig</string>
+    <string name="speed_NORMAL">Normaal</string>
+    <string name="speed_FAST">Snel</string>
+    <string name="settings_default_difficulty">Standaard moeilijkheid</string>
+    <string name="settings_hints">Speelbare kaarten oplichten</string>
+    <string name="settings_keep_screen_on">Scherm aan houden tijdens spel</string>
+    <string name="settings_house_rules">Huisregels Zweeds Pesten</string>
+    <string name="settings_about">Over</string>
+    <string name="settings_about_text">BlueCard %1$s · het spel werkt volledig offline. Op het start- en eindscherm staat een advertentie (Google AdMob), nooit tijdens het spel; die wordt alleen geladen als je internet hebt.</string>
+    <string name="settings_ad_privacy">Privacy-instellingen advertenties</string>
+    <string name="settings_reset">Standaardinstellingen herstellen</string>
+
+    <!-- House rules editor -->
+    <string name="hr_title">Huisregels</string>
+    <string name="hr_enforce">Spelregels afdwingen</string>
+    <string name="hr_enforce_detail">Uit: je kunt elke kaart spelen, net als aan tafel. Let dus op of iedereen eerlijk speelt. Aan: de app weigert kaarten die niet passen.</string>
+    <string name="rules_enforced">Spelregels worden afgedwongen</string>
+    <string name="rules_not_enforced">Vals spelen toegestaan</string>
+    <string name="rules_cheating_title">Vals spelen</string>
+    <string name="hr_preset">Voorinstelling</string>
+    <string name="preset_CLASSIC">Klassiek (NL)</string>
+    <string name="preset_TIS">TIS-modus</string>
+    <string name="preset_PESTKOP">Extra pesten</string>
+    <string name="preset_custom">Eigen regels</string>
+    <string name="hr_special_cards">Speciale kaarten</string>
+    <string name="hr_options">Opties</string>
+    <string name="hr_hand_size">Handkaarten: %1$d</string>
+    <string name="hr_allow_multiple">Meerdere gelijke kaarten tegelijk</string>
+    <string name="hr_four_of_kind">Vier dezelfde verbrandt de stapel</string>
+    <string name="hr_burn_extra">Extra beurt na verbranden</string>
+    <string name="hr_lower_equal">Na \"lager\" mag ook dezelfde waarde</string>
+    <string name="hr_swap_phase">Ruilfase aan het begin</string>
+    <string name="hr_gamble">Gokken van de trekstapel</string>
+    <string name="hr_gamble_detail">In plaats van een kaart uit je hand te spelen mag je blind de bovenste kaart van de trekstapel omdraaien. Past hij, dan ligt hij op de stapel; past hij niet, dan pak je de stapel én die kaart.</string>
+    <string name="hr_reshuffle">Verbrande kaarten herschudden</string>
+    <string name="hr_play_after_pickup">Na pakken zelf beginnen</string>
+    <string name="hr_play_after_pickup_detail">Wie de stapel pakt, legt daarna meteen zelf de eerste kaart op de nieuwe stapel.</string>
+    <string name="rules_play_after_pickup">Na het pakken van de stapel mag je zelf meteen een nieuwe stapel beginnen.</string>
+    <string name="hr_play_until_last">Doorspelen tot de pestkop</string>
+    <string name="hr_play_until_last_detail">Aan: wie klaar is stapt uit en de rest speelt door tot er één speler met kaarten overblijft, de pestkop. Zo krijgt iedereen een plek. Uit: het spel stopt zodra de eerste speler al zijn kaarten kwijt is. Met twee spelers maakt het niets uit.</string>
+    <string name="hr_start_rule">Wie begint</string>
+    <string name="start_LOWEST_CARD">Laagste kaart</string>
+    <string name="start_RANDOM">Willekeurig</string>
+    <string name="hr_warning_long">Let op: zonder reset- of verbrandkaart, of met herschudden, kan een spel heel lang duren.</string>
+
+    <!-- Engine reject reasons -->
+    <string name="err_UNKNOWN_PLAYER">Onbekende speler.</string>
+    <string name="err_GAME_FINISHED">Het spel is al afgelopen.</string>
+    <string name="err_WRONG_PHASE">Dat kan nu niet.</string>
+    <string name="err_NOT_YOUR_TURN">Je bent niet aan de beurt.</string>
+    <string name="err_ALREADY_READY">Je bent al klaar.</string>
+    <string name="err_CARD_NOT_AVAILABLE">Die kaart heb je niet (meer).</string>
+    <string name="err_EMPTY_SELECTION">Kies eerst een kaart.</string>
+    <string name="err_DUPLICATE_CARDS">Dezelfde kaart is dubbel gekozen.</string>
+    <string name="err_MIXED_RANKS">Je kunt alleen kaarten van dezelfde waarde samen spelen.</string>
+    <string name="err_MULTIPLE_NOT_ALLOWED">Met deze regels speel je één kaart tegelijk.</string>
+    <string name="err_MUST_PLAY_FACE_DOWN">Je moet nu een blinde kaart spelen.</string>
+    <string name="err_WRONG_SOURCE">Speel eerst je handkaarten op.</string>
+    <string name="err_CARD_TOO_LOW">Die kaart is te laag.</string>
+    <string name="err_CARD_TOO_HIGH">Die kaart is te hoog.</string>
+    <string name="err_INVALID_BLIND_INDEX">Die blinde kaart bestaat niet.</string>
+    <string name="err_PILE_EMPTY">De aflegstapel is leeg.</string>
+    <string name="err_GAMBLE_NOT_ALLOWED">Gokken is met deze regels niet toegestaan.</string>
+    <string name="err_DRAW_PILE_EMPTY">De trekstapel is leeg.</string>
+    <string name="err_TOO_FEW_PLAYERS">Te weinig spelers.</string>
+    <string name="err_TOO_MANY_PLAYERS">Te veel spelers.</string>
+    <string name="err_NOT_ENOUGH_CARDS">Te weinig kaarten voor zoveel spelers met deze handgrootte.</string>
+    <string name="err_INVALID_HAND_SIZE">Ongeldige handgrootte.</string>
+    <string name="err_DUPLICATE_ACTION">Deze zet was al verstuurd.</string>
+    <string name="err_GAME_NOT_RUNNING">Het spel loopt niet.</string>
+    <string name="err_MALFORMED_ACTION">De zet kon niet worden gelezen.</string>
+    <string name="err_NO_GAME">Er is geen spel.</string>
+    <string name="err_NOT_CONNECTED">Geen verbinding met de host.</string>
+    <string name="err_TIMEOUT">De host reageert niet. Probeer het opnieuw.</string>
+    <string name="err_CONNECTION_LOST">De verbinding is verbroken.</string>
+    <string name="err_NOTHING_TO_CHALLENGE">Er valt niets meer te beschuldigen.</string>
+    <string name="err_CANNOT_CHALLENGE_SELF">Je kunt jezelf niet beschuldigen.</string>
+    <string name="err_LAST_CARD_MUST_FIT">Je laatste kaart moet wel passen: met een valse kaart kun je niet uitgaan.</string>
+    <string name="err_generic">Dat kan niet (%1$s).</string>
+
+    <!-- Event log -->
+    <string name="ev_swap_phase">Ruilfase: ruil kaarten en tik op Klaar</string>
+    <string name="ev_swapped">%1$s ruilt kaarten</string>
+    <string name="ev_ready">%1$s is klaar</string>
+    <string name="ev_started">%1$s begint</string>
+    <string name="ev_started_card">%1$s begint (laagste kaart %2$s)</string>
+    <string name="ev_played">%1$s speelt %2$s</string>
+    <string name="ev_played_open">%1$s speelt open kaart %2$s</string>
+    <string name="ev_blind_ok">%1$s draait blind %2$s om: past!</string>
+    <string name="ev_blind_fail">%1$s draait blind %2$s om: past niet</string>
+    <string name="ev_gamble_ok">%1$s gokt en draait %2$s om: past!</string>
+    <string name="ev_gamble_fail">%1$s gokt en draait %2$s om: past niet</string>
+    <string name="ev_picked_up">%1$s pakt de stapel (%2$d)</string>
+    <string name="ev_skipped">%1$s wordt overgeslagen</string>
+    <string name="ev_reversed">Speelrichting draait om</string>
+    <string name="ev_starts_after_pickup">%1$s mag zelf beginnen</string>
+    <string name="ev_extra_turn">%1$s mag nog een keer</string>
+    <string name="ev_reshuffled">Verbrande kaarten vormen een nieuwe trekstapel (%1$d)</string>
+    <string name="ev_player_out">%1$s is uit! Plaats %2$d</string>
+    <string name="ev_false_accusation">%1$s riep onterecht vals en pakt de stapel (%2$d)</string>
+    <string name="ev_game_over">Spel afgelopen: %1$s wint</string>
+
+    <!-- Service -->
+    <string name="notif_channel_name">Bluetooth-spel</string>
+    <string name="notif_channel_desc">Houdt een Bluetooth-spel actief terwijl de app op de achtergrond staat</string>
+    <string name="notif_hosting">Je bent host van een spel</string>
+    <string name="notif_joined">Verbonden met een spel</string>
+    <string name="notif_text">Tik om terug te gaan naar het spel</string>
+    <string name="turn_channel_name">Jouw beurt</string>
+    <string name="turn_channel_desc">Trilt en meldt het als je aan de beurt bent terwijl de app op de achtergrond staat</string>
+    <string name="turn_alert_title">Je bent aan de beurt!</string>
+    <string name="turn_alert_title_again">De anderen wachten op je</string>
+    <string name="turn_alert_text">%1$s · tik om verder te spelen</string>
+
+    <!-- Plurals -->
+    <plurals name="bots_count_value">
+        <item quantity="one">%1$d tegenstander</item>
+        <item quantity="other">%1$d tegenstanders</item>
+    </plurals>
+    <plurals name="host_need_players">
+        <item quantity="one">Minimaal %1$d speler nodig</item>
+        <item quantity="other">Minimaal %1$d spelers nodig</item>
+    </plurals>
+    <plurals name="join_players_line">
+        <item quantity="one">%1$d speler (max. %2$d)</item>
+        <item quantity="other">%1$d spelers (max. %2$d)</item>
+    </plurals>
+    <plurals name="game_pile_count">
+        <item quantity="one">%1$d kaart</item>
+        <item quantity="other">%1$d kaarten</item>
+    </plurals>
+    <plurals name="result_cards_left">
+        <item quantity="one">%1$d kaart over</item>
+        <item quantity="other">%1$d kaarten over</item>
+    </plurals>
+    <plurals name="hr_max_players">
+        <item quantity="one">Maximaal %1$d speler met deze instelling</item>
+        <item quantity="other">Maximaal %1$d spelers met deze instelling</item>
+    </plurals>
+    <plurals name="ev_burned">
+        <item quantity="one">Stapel verbrand! (%1$d kaart)</item>
+        <item quantity="other">Stapel verbrand! (%1$d kaarten)</item>
+    </plurals>
+    <plurals name="ev_burned_four">
+        <item quantity="one">Vier dezelfde: stapel verbrand! (%1$d kaart)</item>
+        <item quantity="other">Vier dezelfde: stapel verbrand! (%1$d kaarten)</item>
+    </plurals>
+    <plurals name="ev_cheat_caught">
+        <item quantity="one">Vals! %1$s betrapt %2$s op %3$s. %2$s pakt %4$d kaart.</item>
+        <item quantity="other">Vals! %1$s betrapt %2$s op %3$s. %2$s pakt %4$d kaarten.</item>
+    </plurals>
+    <plurals name="ev_cheat_caught_you">
+        <item quantity="one">Vals! %1$s betrapt jou op %2$s. Je pakt %3$d kaart.</item>
+        <item quantity="other">Vals! %1$s betrapt jou op %2$s. Je pakt %3$d kaarten.</item>
+    </plurals>
+    <!-- Leaderboard and skins -->
+    <string name="menu_leaderboard">Ranglijst</string>
+    <string name="menu_skins">Skins</string>
+    <string name="lb_title">Ranglijst</string>
+    <string name="lb_header">Wie is de beste aan tafel?</string>
+    <string name="lb_subtitle">Telefoons die samen via Bluetooth spelen, wisselen hun uitslagen uit</string>
+    <string name="lb_all_games">Alle spellen</string>
+    <string name="lb_you">Jij</string>
+    <string name="lb_you_detail">Al je potjes, ook tegen bots</string>
+    <string name="lb_together">Samen gespeeld</string>
+    <string name="lb_empty">Nog geen potjes via Bluetooth. Speel samen met anderen om hier te verschijnen.</string>
+    <string name="lb_played">Gespeeld</string>
+    <string name="lb_wins">Gewonnen</string>
+    <string name="lb_losses">Verloren</string>
+    <string name="lb_rate">Winst</string>
+    <string name="lb_rate_value">%1$d%%</string>
+    <string name="skins_title">Skins</string>
+    <plurals name="skins_wins">
+        <item quantity="one">Je hebt %1$d keer gewonnen</item>
+        <item quantity="other">Je hebt %1$d keer gewonnen</item>
+    </plurals>
+    <string name="skins_backs">Kaartruggen</string>
+    <string name="skins_tables">Tafels</string>
+    <string name="skins_chosen">Gekozen</string>
+    <string name="skins_choose">Kies</string>
+    <plurals name="skins_wins_needed">
+        <item quantity="one">Nog %1$d overwinning</item>
+        <item quantity="other">Nog %1$d overwinningen</item>
+    </plurals>
+    <string name="skins_premium">Premium</string>
+    <string name="skins_price">€ %1$s</string>
+    <string name="skins_coming_soon">Binnenkort te koop</string>
+    <string name="skin_back_classic">Klassiek blauw</string>
+    <string name="skin_back_cherry">Kersenrood</string>
+    <string name="skin_back_emerald">Smaragd</string>
+    <string name="skin_back_midnight_gold">Middernacht goud</string>
+    <string name="skin_back_orange_lion">Oranje leeuw</string>
+    <string name="skin_back_diamond_holo">Diamant Holo</string>
+    <string name="skin_table_green">Groen vilt</string>
+    <string name="skin_table_blue">Blauw vilt</string>
+    <string name="skin_table_bordeaux">Bordeaux</string>
+    <string name="skin_table_slate">Leisteen</string>
+    <string name="skin_table_night">Nachtclub</string>
+
+    <!-- Pesten -->
+    <string name="game_pesten">Pesten</string>
+    <string name="game_choice">Spel</string>
+    <string name="game_choice_zweeds_detail">Hand, open en blinde kaarten; hoger of gelijk opleggen</string>
+    <string name="game_choice_pesten_detail">Kleur of waarde volgen; pest je tegenstanders met pakkaarten</string>
+    <string name="settings_house_rules_zweeds">Huisregels Zweeds Pesten</string>
+    <string name="settings_house_rules_pesten">Huisregels Pesten</string>
+    <string name="hr_title_pesten">Huisregels Pesten</string>
+
+    <string name="suit_CLUBS">Klaveren</string>
+    <string name="suit_DIAMONDS">Ruiten</string>
+    <string name="suit_HEARTS">Harten</string>
+    <string name="suit_SPADES">Schoppen</string>
+
+    <string name="ps_effect_NONE">Gewone kaart</string>
+    <string name="ps_effect_DRAW_TWO">Volgende speler pakt 2 kaarten</string>
+    <string name="ps_effect_PLAY_AGAIN">Je mag nog een kaart opleggen</string>
+    <string name="ps_effect_SKIP">Volgende speler wordt overgeslagen</string>
+    <string name="ps_effect_CHOOSE_SUIT">Past altijd; jij kiest de kleur die moet volgen</string>
+    <string name="ps_effect_REVERSE">Speelrichting draait om (met 2 spelers: nog een keer)</string>
+    <plurals name="ps_effect_joker">
+        <item quantity="one">Past altijd; volgende speler pakt %1$d kaart</item>
+        <item quantity="other">Past altijd; volgende speler pakt %1$d kaarten</item>
+    </plurals>
+    <string name="ps_effect_short_NONE">Gewoon</string>
+    <string name="ps_effect_short_DRAW_TWO">Pak 2</string>
+    <string name="ps_effect_short_PLAY_AGAIN">Nog een keer</string>
+    <string name="ps_effect_short_SKIP">Wacht</string>
+    <string name="ps_effect_short_CHOOSE_SUIT">Kleur kiezen</string>
+    <string name="ps_effect_short_REVERSE">Keer</string>
+    <string name="ps_effect_short_joker">Pak %1$d</string>
+
+    <string name="ps_preset_CLASSIC">Klassiek (NL)</string>
+    <string name="ps_preset_SIMPLE">Simpel</string>
+    <string name="ps_preset_NO_JOKERS">Zonder jokers</string>
+
+    <string name="hr_ps_jokers">Jokers</string>
+    <string name="hr_ps_joker_draw">Joker: volgende pakt</string>
+    <plurals name="hr_ps_hand_size_value">
+        <item quantity="one">%1$d kaart</item>
+        <item quantity="other">%1$d kaarten</item>
+    </plurals>
+    <string name="hr_ps_stack">Pakkaarten stapelen</string>
+    <string name="hr_ps_stack_detail">Op een 2 of joker mag je een 2 of joker leggen; de volgende pakt dan alles bij elkaar.</string>
+    <string name="hr_ps_last_card">"Laatste kaart!" melden</string>
+    <string name="hr_ps_last_card_detail">Heb je nog één kaart en heb je het niet gemeld, dan kan iedereen "Vergeten!" roepen: je pakt 2 strafkaarten.</string>
+    <string name="hr_ps_finish_special">Uitgaan op een pestkaart</string>
+    <string name="hr_ps_finish_special_detail">Uit: is je laatste kaart een pestkaart, dan pak je er één bij.</string>
+    <string name="hr_ps_play_until_last_detail">Aan: wie uit is stapt uit en de rest speelt door tot de pestkop overblijft. Uit: de eerste die uit is wint en het spel stopt.</string>
+    <string name="lobby_chip_stack">Stapelen</string>
+    <string name="lobby_chip_last_card">Laatste kaart melden</string>
+    <string name="lobby_chip_finish_special">Uit op pestkaart</string>
+
+    <plurals name="rules_ps_goal">
+        <item quantity="one">Raak als eerste al je kaarten kwijt. Iedereen krijgt %1$d kaart; de rest is de trekstapel en de bovenste kaart gaat open.</item>
+        <item quantity="other">Raak als eerste al je kaarten kwijt. Iedereen krijgt %1$d kaarten; de rest is de trekstapel en de bovenste kaart gaat open.</item>
+    </plurals>
+    <string name="rules_ps_basic">Leg een kaart van dezelfde kleur of dezelfde waarde op de aflegstapel. Kun of wil je niet, pak dan een kaart; past die, dan mag je hem meteen opleggen, anders pas je.</string>
+    <string name="rules_ps_stack">Op een pakkaart mag je een andere pakkaart leggen (2 of joker): de volgende speler pakt dan alles bij elkaar.</string>
+    <string name="rules_ps_last_card">Heb je nog twee kaarten, tik dan op "Laatste kaart!". Vergeet je het, dan kan iedereen "Vergeten!" roepen en pak je 2 strafkaarten.</string>
+    <string name="rules_ps_finish_special">Uitgaan op een pestkaart mag niet: je pakt dan een kaart bij.</string>
+
+    <string name="ps_requirement_suit">%1$s</string>
+    <string name="ps_requirement_match">%1$s of %2$s</string>
+    <string name="ps_must_draw">Pak %1$d</string>
+    <string name="ps_must_draw_or_stack">Pak %1$d of leg een pakkaart</string>
+    <string name="game_draw">Pak kaart</string>
+    <string name="game_draw_n">Pak %1$d</string>
+    <string name="game_pass">Pas</string>
+    <string name="game_last_card">Laatste kaart!</string>
+    <string name="game_catch">Vergeten!</string>
+    <string name="game_choose_suit">Kies een kleur</string>
+    <string name="game_announced">laatste kaart</string>
+    <string name="game_drawn_hint">Leg de gepakte kaart op of pas</string>
+
+    <string name="ev_ps_played_suit">%1$s speelt %2$s en kiest %3$s</string>
+    <string name="ev_ps_passed">%1$s past</string>
+    <string name="ev_ps_plays_after_penalty">%1$s mag zelf beginnen</string>
+    <string name="hr_ps_play_after_penalty">Na pakken zelf beginnen</string>
+    <string name="hr_ps_play_after_penalty_detail">Wie de kaarten van een 2 of joker heeft gepakt, mag daarna meteen zelf een kaart opleggen.</string>
+    <string name="rules_ps_play_after_penalty">Heb je de kaarten van een 2 of joker gepakt, dan mag je daarna meteen zelf een kaart opleggen.</string>
+    <plurals name="ev_ps_must_draw">
+        <item quantity="one">%1$s moet %2$d kaart pakken</item>
+        <item quantity="other">%1$s moet %2$d kaarten pakken</item>
+    </plurals>
+    <string name="ev_ps_last_card">%1$s: Laatste kaart!</string>
+    <plurals name="ev_ps_forgotten">
+        <item quantity="one">Vergeten! %1$s betrapt %2$s, die %3$d strafkaart pakt.</item>
+        <item quantity="other">Vergeten! %1$s betrapt %2$s, die %3$d strafkaarten pakt.</item>
+    </plurals>
+    <plurals name="ev_ps_forgotten_you">
+        <item quantity="one">Vergeten! %1$s betrapt jou: je pakt %2$d strafkaart.</item>
+        <item quantity="other">Vergeten! %1$s betrapt jou: je pakt %2$d strafkaarten.</item>
+    </plurals>
+    <string name="ev_ps_special_finish">%1$s mag niet uitgaan op een pestkaart en pakt er één bij</string>
+    <string name="ev_ps_reshuffled">De aflegstapel wordt de nieuwe trekstapel (%1$d)</string>
+    <plurals name="ev_ps_false_accusation">
+        <item quantity="one">%1$s riep onterecht vals en pakt %2$d kaart</item>
+        <item quantity="other">%1$s riep onterecht vals en pakt %2$d kaarten</item>
+    </plurals>
+    <plurals name="ev_ps_drew">
+        <item quantity="one">%1$s pakt een kaart</item>
+        <item quantity="other">%1$s pakt %2$d kaarten</item>
+    </plurals>
+    <plurals name="ev_ps_drew_penalty">
+        <item quantity="one">%1$s pakt %2$d strafkaart</item>
+        <item quantity="other">%1$s pakt %2$d kaarten</item>
+    </plurals>
+
+    <string name="err_DOES_NOT_FIT">Die kaart past niet: leg dezelfde kleur of waarde op.</string>
+    <string name="err_WRONG_SUIT">Er is een andere kleur gevraagd.</string>
+    <string name="err_MUST_DRAW_OR_STACK">Je moet pakken, of er een pakkaart op leggen.</string>
+    <string name="err_ONLY_DRAWN_CARD">Na het pakken mag je alleen de gepakte kaart opleggen.</string>
+    <string name="err_MUST_CHOOSE_SUIT">Kies eerst een kleur.</string>
+    <string name="err_ALREADY_DRAWN">Je hebt al een kaart gepakt.</string>
+    <string name="err_NOTHING_TO_DRAW">Er zijn geen kaarten meer om te pakken.</string>
+    <string name="err_NOT_DRAWN_YET">Pak eerst een kaart.</string>
+    <string name="err_LAST_CARD_NOT_ALLOWED">Laatste kaart melden kan alleen met één of twee kaarten.</string>
+    <string name="err_NOTHING_TO_CATCH">Er is niemand die zijn laatste kaart vergat.</string>
+    <string name="err_INVALID_JOKERS">Ongeldig aantal jokers.</string>
+    <string name="settings_sound">Geluidseffecten</string>
+    <string name="game_presidenten">Presidenten</string>
+    <string name="game_hartenjagen">Hartenjagen</string>
+    <string name="game_choice_presidenten_detail">Leg hogere sets van hetzelfde aantal; wie eerst uit is wordt president</string>
+    <string name="game_choice_hartenjagen_detail">Bekennen en harten en de schoppenvrouw ontwijken</string>
+    <string name="settings_house_rules_presidenten">Huisregels Presidenten</string>
+    <string name="settings_house_rules_hartenjagen">Huisregels Hartenjagen</string>
+    <string name="hr_title_presidenten">Huisregels Presidenten</string>
+    <string name="hr_title_hartenjagen">Huisregels Hartenjagen</string>
+    <string name="pr_title_PRESIDENT">President</string>
+    <string name="pr_title_VICE_PRESIDENT">Vicepresident</string>
+    <string name="pr_title_CITIZEN">Burger</string>
+    <string name="pr_title_VICE_SCUM">Vice-sloeber</string>
+    <string name="pr_title_SCUM">Sloeber</string>
+    <plurals name="pr_ev_tribute">
+        <item quantity="one">%1$s geeft de beste kaart aan %2$s</item>
+        <item quantity="other">%1$s geeft de %3$d beste kaarten aan %2$s</item>
+    </plurals>
+    <plurals name="pr_ev_returned">
+        <item quantity="one">%1$s geeft %2$s een kaart terug</item>
+        <item quantity="other">%1$s geeft %2$s %3$d kaarten terug</item>
+    </plurals>
+    <string name="pr_ev_trick">%1$s wint de slag</string>
+    <string name="pr_preset_CLASSIC">Klassiek</string>
+    <string name="pr_preset_WITH_JOKERS">Met jokers</string>
+    <string name="hr_pr_two_high">De 2 is de hoogste kaart</string>
+    <string name="hr_pr_two_low">De 2 is de laagste kaart</string>
+    <string name="hr_pr_two_high_detail">Aan: de 3 is het laagst, daarna oplopend tot de aas en de 2 als hoogste. Uit: de 2 is het laagst en de aas het hoogst.</string>
+    <string name="hr_pr_exchange">Kaarten ruilen</string>
+    <string name="hr_pr_exchange_detail">In de volgende ronde geeft de sloeber zijn 2 beste kaarten aan de president en krijgt 2 kaarten naar keuze terug; vanaf 4 spelers ruilen de vices ook 1 kaart.</string>
+    <string name="hr_pr_pass_final">Pas is pas</string>
+    <string name="hr_pr_pass_final_detail">Wie past, doet de rest van de slag niet meer mee.</string>
+    <string name="hr_pr_equal_skips">Gelijk is overslaan</string>
+    <string name="hr_pr_equal_skips_detail">Je mag ook dezelfde waarde als de bovenste set leggen; de volgende speler wordt dan overgeslagen.</string>
+    <string name="rules_pr_goal">Raak als eerste je kaarten kwijt en word president. De laatste is de sloeber.</string>
+    <string name="rules_pr_setup">Alle kaarten worden verdeeld. Wie de laagste kaart heeft begint de eerste ronde; daarna begint de sloeber.</string>
+    <string name="rules_pr_play">Wie begint legt één of meer kaarten van dezelfde waarde. De volgende moet evenveel kaarten van een hogere waarde leggen, of passen.</string>
+    <string name="rules_pr_order_two_high">Volgorde: 3 4 5 6 7 8 9 10 B V H A 2 (jokers het hoogst).</string>
+    <string name="rules_pr_order_two_low">Volgorde: 2 3 4 5 6 7 8 9 10 B V H A (jokers het hoogst).</string>
+    <string name="rules_pr_jokers">Een joker is de hoogste kaart en kan ook elke set aanvullen (bijvoorbeeld 9 + joker = twee negens).</string>
+    <string name="rules_pr_trick_title">Een slag winnen</string>
+    <string name="rules_pr_trick">Gaat niemand meer hoger, dan wint wie het laatst legde de slag en begint de volgende met een set naar keuze.</string>
+    <string name="rules_pr_pass_open">Wie gepast heeft, mag bij de volgende beurt weer meedoen.</string>
+    <string name="rules_pr_titles_title">Titels</string>
+    <string name="rules_pr_titles">Eerste uit: president, tweede: vicepresident, laatste: sloeber, op een na laatste: vice-sloeber; de rest is burger.</string>
+    <string name="pr_passed">past</string>
+    <string name="pr_requirement_lead">Leg wat je wilt</string>
+    <plurals name="pr_requirement">
+        <item quantity="one">%1$d kaart hoger dan %2$s</item>
+        <item quantity="other">%1$d kaarten hoger dan %2$s</item>
+    </plurals>
+    <plurals name="pr_give_cards">
+        <item quantity="one">Geef %2$s %1$d kaart terug: tik hem aan</item>
+        <item quantity="other">Geef %2$s %1$d kaarten terug: tik ze aan</item>
+    </plurals>
+    <string name="pr_waiting_exchange">Er worden kaarten geruild…</string>
+    <string name="pr_you_finished">Je bent uit: %1$s!</string>
+    <string name="pr_give_button">Geef %1$d/%2$d</string>
+    <string name="err_WRONG_COUNT">Leg evenveel kaarten als de set op tafel.</string>
+    <string name="err_TOO_LOW">Dat is niet hoger dan de set op tafel.</string>
+    <string name="err_CANNOT_PASS_LEAD">Jij begint deze slag: leg een set.</string>
+    <string name="err_NOTHING_TO_GIVE">Je hoeft geen kaarten terug te geven.</string>
+    <string name="err_WRONG_GIVE_COUNT">Kies het juiste aantal kaarten om terug te geven.</string>
+    <string name="hj_round">Ronde %1$d</string>
+    <string name="hj_ev_passed">%1$s heeft kaarten doorgegeven</string>
+    <string name="hj_ev_lead">%1$s komt uit</string>
+    <string name="hj_ev_hearts_broken">Harten is gebroken!</string>
+    <plurals name="hj_ev_trick">
+        <item quantity="one">%1$s pakt de slag: %2$d punt</item>
+        <item quantity="other">%1$s pakt de slag: %2$d punten</item>
+    </plurals>
+    <string name="hj_ev_moon">%1$s schiet de maan! Iedereen anders krijgt %2$d punten.</string>
+    <string name="hj_ev_scored">Ronde %1$d klaar</string>
+    <plurals name="hj_points">
+        <item quantity="one">%1$d punt</item>
+        <item quantity="other">%1$d punten</item>
+    </plurals>
+    <string name="hj_target_one">Eén ronde</string>
+    <string name="hj_target_one_short">1 ronde</string>
+    <string name="hj_target_value">Tot %1$d punten</string>
+    <string name="hj_preset_CLASSIC">Klassiek (NL)</string>
+    <string name="hj_preset_INTERNATIONAL">Internationaal</string>
+    <plurals name="hr_hj_pass_value">
+        <item quantity="one">%1$d kaart doorgeven</item>
+        <item quantity="other">%1$d kaarten doorgeven</item>
+    </plurals>
+    <string name="hr_hj_pass">Kaarten doorgeven voor elke ronde</string>
+    <string name="hr_hj_hearts_broken">Harten moet gebroken zijn</string>
+    <string name="hr_hj_hearts_broken_detail">Je mag pas met harten uitkomen als er al harten is gespeeld (of als je niets anders hebt).</string>
+    <string name="hr_hj_first_trick">Geen punten in de eerste slag</string>
+    <string name="hr_hj_first_trick_detail">In de eerste slag mag je geen harten of schoppenvrouw bijgooien, tenzij je niets anders hebt.</string>
+    <string name="hr_hj_moon">De maan schieten</string>
+    <string name="hr_hj_moon_detail">Wie in een ronde alle strafkaarten pakt, krijgt 0 punten; iedereen anders krijgt ze dan.</string>
+    <string name="hr_hj_clubs_lead">Laagste klaveren komt uit</string>
+    <string name="hr_hj_clubs_lead_detail">Wie de laagste klaveren heeft (meestal de 2), begint de eerste slag daarmee.</string>
+    <string name="hr_hj_queen">Schoppenvrouw</string>
+    <string name="hr_hj_jack">Klaverboer</string>
+    <string name="hr_hj_target">Spelen tot</string>
+    <string name="rules_hj_goal">Pak zo min mogelijk strafpunten. De laagste score wint.</string>
+    <string name="rules_hj_setup">Alle kaarten worden verdeeld (met 3, 5 of 6 spelers gaan er een paar lage kaarten uit).</string>
+    <plurals name="rules_hj_pass">
+        <item quantity="one">Voor elke ronde geeft iedereen %1$d kaart door aan een buur (links, rechts, overkant, dan niet).</item>
+        <item quantity="other">Voor elke ronde geeft iedereen %1$d kaarten door aan een buur (links, rechts, overkant, dan niet).</item>
+    </plurals>
+    <string name="rules_hj_play">Iedereen speelt één kaart per slag. Beken de gevraagde kleur als het kan; anders mag je alles bijgooien. De hoogste kaart van de gevraagde kleur pakt de slag en komt opnieuw uit.</string>
+    <string name="rules_hj_points_title">Strafpunten</string>
+    <string name="rules_hj_end">Er worden rondes gespeeld tot iemand de grens bereikt (%1$s). Dan wint de laagste score.</string>
+    <string name="hj_passed_badge">klaar</string>
+    <string name="hj_follow">Bekennen: %1$s</string>
+    <string name="hj_lead">Kom uit</string>
+    <string name="hj_hearts_broken_badge">♥︎ gebroken</string>
+    <string name="hj_you_score">Jij: %1$s</string>
+    <plurals name="hj_pass_to">
+        <item quantity="one">Kies %1$d kaart voor %2$s</item>
+        <item quantity="other">Kies %1$d kaarten voor %2$s</item>
+    </plurals>
+    <string name="hj_pass_waiting">Wachten tot iedereen heeft doorgegeven…</string>
+    <string name="hj_pass_button">Doorgeven %1$d/%2$d</string>
+    <string name="hj_continue">Verder</string>
+    <string name="hj_total">Totaal</string>
+    <string name="err_WRONG_PASS_COUNT">Kies het juiste aantal kaarten om door te geven.</string>
+    <string name="err_ALREADY_PASSED">Je hebt je kaarten al doorgegeven.</string>
+    <string name="err_MUST_FOLLOW_SUIT">Beken de gevraagde kleur.</string>
+    <string name="err_MUST_LEAD_CLUB">Begin de eerste slag met je laagste klaveren.</string>
+    <string name="err_HEARTS_NOT_BROKEN">Harten is nog niet gebroken: kom uit met een andere kleur.</string>
+    <string name="err_NO_POINTS_FIRST_TRICK">Geen strafkaarten in de eerste slag.</string>
+    <string name="menu_nearby">Samen spelen</string>
+    <string name="nearby_join_detail">Tafels van telefoons in de buurt verschijnen hier vanzelf</string>
+    <string name="nearby_visible">Je tafel is zichtbaar voor telefoons in de buurt zolang dit scherm open is.</string>
+    <string name="nearby_unavailable">Samen spelen is op dit toestel niet beschikbaar.</string>
+    <string name="err_NOT_PLAYING">Je bent al uit, dus je kijkt alleen nog mee.</string>
+    <string name="err_REPLAY_LIMIT">Die kaart mag je niet nog een keer meteen terugleggen. Speel een andere kaart.</string>
+    <string name="hr_escalating">Steeds zwaardere straf</string>
+    <string name="hr_escalating_detail">Elke keer dat dezelfde speler weer betrapt wordt, pakt die een kaart extra bovenop de gewone straf.</string>
+    <string name="rules_escalating">Steeds zwaardere straf: de eerste keer betrapt pak je de pot, de tweede keer de pot plus een kaart, en daarna steeds een kaart meer.</string>
+    <string name="rules_ps_escalating">Steeds zwaardere straf: elke keer dat dezelfde speler weer betrapt wordt, een strafkaart meer.</string>
+    <string name="rules_bounce">Pot gepakt? De bovenste kaart mag je hooguit 3 keer meteen terugleggen, daarna moet je iets anders spelen. Zo blijft een 7 niet eindeloos heen en weer gaan.</string>
+    <string name="rules_ps_reannounce">Moest je pakken nadat je had geroepen? Dan roep je opnieuw \"Laatste kaart!\" als je weer op één kaart staat.</string>
+    <string name="social_buzz">Buzz %1$s</string>
+    <string name="social_buzzed_you">%1$s buzzt je: jouw beurt!</string>
+    <string name="social_buzzed_other">%1$s buzzt %2$s</string>
+    <string name="social_slow_down">Rustig aan: hooguit 3 buzzes per minuut en een paar reacties tegelijk.</string>
+    <string name="social_react">Reageer</string>
+    <string name="shuffle_you">Jij schudt!</string>
+    <string name="shuffle_you_detail">Schud je telefoon om de kaarten te schudden (3 seconden flink schudden).</string>
+    <string name="shuffle_tap_detail">Tik snel op de kaarten om ze te schudden.</string>
+    <string name="shuffle_other">%1$s schudt de kaarten…</string>
+    <string name="shuffle_done">Geschud! Er wordt gedeeld…</string>
+    <string name="shuffle_skip">Schudden overslaan</string>
+    <string name="settings_shuffle">Schudden met je telefoon</string>
+    <string name="settings_shuffle_detail">Voor elke ronde schudt één speler (om de beurt) de kaarten door 3 seconden met de telefoon te schudden. Als host geldt dit voor de hele tafel.</string>
+    <string name="spectator_banner">Je kijkt mee. Vanaf de volgende ronde speel je mee.</string>
+    <string name="spectator_out">Je bent uit: je kunt nog meekijken en reageren.</string>
+    <string name="lobby_spectators">Kijken mee: %1$s</string>
+    <string name="notice_spectator_joined">%1$s kijkt mee en speelt de volgende ronde mee</string>
+    <string name="join_phase_watch">spel bezig · kijk mee</string>
+    <string name="join_watching_wait">Je kijkt mee aan deze tafel. Bij de volgende ronde krijg je een plek.</string>
+    <string name="fact_heading">Leuke feitjes</string>
+    <string name="fact_line">%1$s · %2$s</string>
+    <string name="fact_cheater">Grootste valsspeler</string>
+    <string name="fact_sharp_eye">Scherpste oog</string>
+    <string name="fact_false_alarm">Vals alarm</string>
+    <string name="fact_forgetful">Vergeetachtig</string>
+    <string name="fact_last_card">Hardste roeper</string>
+    <string name="fact_moon">Schoot de maan</string>
+    <string name="fact_burner">Pyromaan</string>
+    <string name="fact_pile_eater">Stapelvreter</string>
+    <string name="fact_blind_luck">Blind geluk</string>
+    <string name="fact_drawer">Graaier</string>
+    <string name="fact_tricks">Meeste slagen</string>
+    <string name="fact_passer">Paste het vaakst</string>
+    <string name="fact_total">Hele tafel</string>
+    <plurals name="fact_unit_caught">
+        <item quantity="one">%1$d keer betrapt</item>
+        <item quantity="other">%1$d keer betrapt</item>
+    </plurals>
+    <plurals name="fact_unit_spotted">
+        <item quantity="one">%1$d keer terecht vals geroepen</item>
+        <item quantity="other">%1$d keer terecht vals geroepen</item>
+    </plurals>
+    <plurals name="fact_unit_false">
+        <item quantity="one">%1$d keer onterecht vals geroepen</item>
+        <item quantity="other">%1$d keer onterecht vals geroepen</item>
+    </plurals>
+    <plurals name="fact_unit_forgot">
+        <item quantity="one">%1$d keer laatste kaart vergeten</item>
+        <item quantity="other">%1$d keer laatste kaart vergeten</item>
+    </plurals>
+    <plurals name="fact_unit_called">
+        <item quantity="one">%1$d keer laatste kaart geroepen</item>
+        <item quantity="other">%1$d keer laatste kaart geroepen</item>
+    </plurals>
+    <plurals name="fact_unit_moon">
+        <item quantity="one">%1$d keer</item>
+        <item quantity="other">%1$d keer</item>
+    </plurals>
+    <plurals name="fact_unit_burns">
+        <item quantity="one">%1$d keer de stapel verbrand</item>
+        <item quantity="other">%1$d keer de stapel verbrand</item>
+    </plurals>
+    <plurals name="fact_unit_cards">
+        <item quantity="one">%1$d kaart opgepakt</item>
+        <item quantity="other">%1$d kaarten opgepakt</item>
+    </plurals>
+    <plurals name="fact_unit_blind">
+        <item quantity="one">%1$d blinde kaart raak</item>
+        <item quantity="other">%1$d blinde kaarten raak</item>
+    </plurals>
+    <plurals name="fact_unit_tricks">
+        <item quantity="one">%1$d slag</item>
+        <item quantity="other">%1$d slagen</item>
+    </plurals>
+    <plurals name="fact_unit_passes">
+        <item quantity="one">%1$d keer gepast</item>
+        <item quantity="other">%1$d keer gepast</item>
+    </plurals>
+    <plurals name="fact_total_cards">
+        <item quantity="one">%1$d kaart gespeeld</item>
+        <item quantity="other">%1$d kaarten gespeeld</item>
+    </plurals>
+    <string name="share_button">Delen</string>
+    <string name="share_open">Deel je overwinning</string>
+    <string name="share_i_won">Ik heb gewonnen met BlueCard!</string>
+    <string name="share_text">Ik heb %1$s gewonnen met BlueCard! 🃏</string>
+    <string name="share_footer">Samen kaarten, zonder internet</string>
+    <string name="game_swap_hint_short">Tik een handkaart en een open kaart (willekeurige volgorde) om te ruilen.</string>
+    <string name="fish_1">Kibbeling</string>
+    <string name="fish_2">Sardientje</string>
+    <string name="fish_3">Makreel</string>
+    <string name="fish_4">Haring</string>
+    <string name="fish_5">Spiering</string>
+    <string name="fish_last">Stinkvis</string>
+    <string name="game_you_finished_fish">Je bent uit: %1$s!</string>
+    <string name="lb_cheat_calls">Vals roepen</string>
+    <string name="lb_calls_right">Terecht</string>
+    <string name="lb_calls_wrong">Onterecht</string>
+    <string name="lb_caught">Betrapt</string>
+    <string name="lb_calls_line">👀 %1$d terecht · 🙈 %2$d onterecht · 🕵️ %3$d betrapt</string>
+    <string name="game_info">Spelverloop en spelregels</string>
+    <string name="game_log">Spelverloop en spelregels</string>
+    <string name="avatar_crop_title">Je foto</string>
+    <string name="avatar_crop_hint">Sleep en knijp om te zoomen: wat in de cirkel staat, zien de anderen.</string>
+    <string name="avatar_crop_use">Gebruik foto</string>
+    <string name="skins_preview_title">Voorbeeld</string>
+    <string name="skins_preview_hint">Sleep om de tafel te kantelen.</string>
+    <string name="skin_back_rainbow_road">Rainbow Road</string>
+    <string name="skin_table_rainbow_road">Rainbow Road</string>
+    <string name="skin_table_oled">OLED-zwart</string>
+    <string name="nearby_title">Spellen in de buurt</string>
+    <string name="nearby_searching">Zoeken naar tafels in de buurt… opent iemand een tafel, dan verschijnt die hier vanzelf.</string>
+    <string name="nearby_setup">Zet Bluetooth aan (en geef toestemming) om hier spellen in de buurt te zien.</string>
+    <string name="nearby_watch">Kijk mee</string>
+    <string name="conn_host_moved">De host is weggegaan: een andere speler neemt de tafel over. Even geduld…</string>
+    <string name="game_leave_host">Je bent de host. Ga je weg, dan neemt een andere speler de tafel over en gaat het spel door (een bot speelt voor jou). Ben je de enige mens aan tafel, dan stopt het spel.</string>
+    <string name="host_leave_text">Een andere speler neemt de tafel over; zonder andere spelers gaat de tafel dicht.</string>
+    <string name="join_taking_over">%1$s neemt de tafel over…</string>
+    <string name="game_swap_hint">Tik een handkaart en een open kaart (in elke volgorde) om ze te ruilen. Klaar? Tik op Klaar.</string>
+    <string name="fact_ninja">Ninja</string>
+    <plurals name="fact_unit_unnoticed">
+        <item quantity="one">%1$d keer ongezien vals gespeeld</item>
+        <item quantity="other">%1$d keer ongezien vals gespeeld</item>
+    </plurals>
+    <string name="host_visible_button">Maak de tafel zichtbaar voor telefoons die later aansluiten</string>
+    <string name="profile_bot">Een bot: hier geen statistieken.</string>
+    <string name="profile_none">Nog geen spellen samen. Zodra jullie samen gespeeld hebben, staan ze hier.</string>
+    <string name="profile_rank">Nr. %1$d op de ranglijst</string>
+    <string name="profile_vs_you">Jij tegen deze speler: %1$d – %2$d</string>
+    <string name="chat_title">Chat</string>
+    <string name="chat_hint">Typ een bericht…</string>
+    <string name="chat_send">Stuur</string>
+    <string name="chat_empty">Nog geen berichten. Zeg eens hoi!</string>
+    <string name="chat_quick_1">Goed gespeeld!</string>
+    <string name="chat_quick_2">Schiet op! ⏰</string>
+    <string name="chat_quick_3">Oeps 😅</string>
+    <string name="chat_quick_4">Nog een potje?</string>
+    <string name="skins_emojis">Emoji\'s</string>
+    <string name="skins_emoji_bar">Jouw reactiebalk</string>
+    <string name="skins_emoji_bar_hint">Tik op een vrijgespeelde emoji om hem in of uit je balk te zetten (max. 6). De anderen zien hem over de tafel zweven.</string>
+    <string name="skins_emoji_free">Vrije keuze</string>
+    <string name="skins_emoji_free_detail">Elke emoji die je wilt</string>
+    <string name="skins_emoji_pick">Kies emoji\'s</string>
+    <string name="skins_emoji_tier_start">Start</string>
+    <string name="nearby_alert_channel">Tafels in de buurt</string>
+    <string name="nearby_alert_channel_desc">Een melding als iemand in de buurt een BlueCard-tafel opent</string>
+    <string name="nearby_alert_title">%1$s heeft een tafel geopend</string>
+    <string name="nearby_alert_text">%1$s · tik om mee te doen</string>
+    <string name="settings_nearby_alerts">Melding bij tafels in de buurt</string>
+    <string name="settings_nearby_alerts_detail">Een melding als iemand in de buurt een tafel opent, ook als BlueCard dicht is. Via Bluetooth Low Energy: de Bluetooth-chip luistert en de app wordt alleen wakker voor een tafel, dus het kost bijna geen batterij.</string>
+    <string name="nearby_joining_wanted">De tafel van %1$s zoeken om mee te doen…</string>
+    <string name="nearby_join_not_found">De tafel van %1$s is niet gevonden. Vraag de host om op 📡 te tikken zodat de tafel zichtbaar is.</string>
+    <string name="req_line">%1$d/%2$d · %3$s</string>
+    <string name="req_wins">keer gewonnen</string>
+    <string name="req_played">potjes gespeeld</string>
+    <string name="req_game_wins">keer %1$s gewonnen</string>
+    <string name="req_game_played">keer %1$s gespeeld</string>
+    <string name="req_right_calls">keer terecht Vals! geroepen</string>
+    <string name="req_ninja">keer ongezien vals gespeeld (ninja)</string>
+    <string name="table_display_join">Als tafel meedoen</string>
+    <string name="table_display_join_detail">Een tablet (of telefoon) in het midden die het spel groot laat zien voor iedereen. Speelt zelf niet mee.</string>
+    <string name="table_display_waiting">📺 Dit scherm is de tafel: het spel verschijnt hier groot zodra de host start.</string>
+    <string name="lobby_table_display">📺 Tafel: %1$s</string>
+    <string name="skins_header">Speel en win om nieuwe kaarten vrij te spelen</string>
+    <string name="menu_start_game">Spel starten</string>
+    <string name="menu_join">Meedoen met een spel</string>
+    <string name="bt_title">Meedoen</string>
+    <string name="bt_intro">Doe mee aan een tafel op een telefoon in de buurt, of zet een tablet neer als tafel. Zelf een tafel openen doe je met Spel starten op het beginscherm. Er is geen internet nodig.</string>
+    <string name="nearby_intro">Doe mee aan een tafel op een telefoon in de buurt, of zet een tablet neer als tafel. Zelf een tafel openen doe je met Spel starten op het beginscherm. Bluetooth of wifi moet aan staan; internet is niet nodig.</string>
+    <string name="host_subtitle">Kies het spel, voeg bots toe of wacht op spelers in de buurt</string>
+    <string name="host_offline">Andere telefoons kunnen nu niet meedoen (Bluetooth staat uit of heeft geen toestemming). Tegen bots spelen kan gewoon.</string>
+    <string name="host_allow">Toestaan</string>
+    <string name="countdown_left">nog %1$s</string>
+    <string name="join_watching_short">Kijken of er een tafel bijkomt…</string>
+    <string name="nearby_join_found">Tafel van %1$s gevonden, verbinden…</string>
+    <string name="menu_start_leaves">Je zit nog aan een tafel. Als je een nieuw spel start, verlaat je die.</string>
+    <string name="challenge_pick_title">Wie speelde vals?</string>
+    <string name="rules_cheating">Standaard dwingt de app de regels niet af: je kunt elke kaart opleggen, net als aan een echte tafel. Iedereen ziet de stapel, dus let op! Denk je dat iemand vals speelt, tik dan binnen 10 seconden op \"Vals!\", ook als er daarna al verder is gespeeld; zijn er meerdere verdachte zetten, dan kies je welke. Meteen betrapt: de valsspeler krijgt zijn kaarten terug, pakt de stapel erbij en zijn beurt is voorbij. Later betrapt: de valsspeler pakt de stapel zoals die dan ligt. Klopt het niet, dan pak jij de stapel. Uitgaan met een valse laatste kaart kan niet. Bots spelen eerlijk, maar betrappen je wel. De host (of jij, tegen bots) kan bij het starten \"Spelregels afdwingen\" aanzetten.</string>
+    <string name="rules_ps_cheat">Zonder \"Spelregels afdwingen\" kun je elke kaart opleggen. Roep binnen 10 seconden \"Vals!\", ook als er daarna al verder is gespeeld: meteen betrapt krijgt de valsspeler zijn kaarten terug plus 2 strafkaarten; later betrapt pakt hij de 2 strafkaarten. Klopt het niet, dan pak jij er 2.</string>
+    <string name="buzz_channel_name">Buzzer</string>
+    <string name="buzz_channel_desc">Als iemand aan tafel je buzzt terwijl je scherm uit staat of de app op de achtergrond is</string>
+    <string name="game_leave_watching">Je kijkt mee. Stoppen met kijken? Je kunt later gewoon weer aansluiten.</string>
+    <string name="game_stop_watching">Stoppen</string>
+    <string name="car_no_table_title">Geen tafel open</string>
+    <string name="car_no_table_text">Open een tafel om het spel op het autoscherm te volgen: wie er aan de beurt is en hoeveel kaarten iedereen nog heeft.</string>
+    <string name="car_open_table">Tafel openen</string>
+    <string name="car_lobby">%1$s · wacht op spelers</string>
+    <string name="car_playing">%1$s · bezig</string>
+    <string name="car_finished">%1$s · afgelopen</string>
+    <string name="car_turn">Aan de beurt</string>
+    <string name="car_out">Uit (%1$d.)</string>
+    <string name="car_place">%1$d. %2$s</string>
+    <string name="car_guest">Aan tafel bij %1$s</string>
+    <plurals name="car_cards">
+        <item quantity="one">%1$d kaart</item>
+        <item quantity="other">%1$d kaarten</item>
+    </plurals>
+    <string name="car_host">Host</string>
+    <string name="car_bot">Bot</string>
+    <string name="car_player">Speler</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Two playing cards: a white card with a red heart in front of a tilted card with a black spade. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:rotation="-14">
+        <path
+            android:fillColor="#FFE3F2FD"
+            android:pathData="M35,30 h26 a4,4 0 0 1 4,4 v38 a4,4 0 0 1 -4,4 h-26 a4,4 0 0 1 -4,-4 v-38 a4,4 0 0 1 4,-4 z" />
+        <path
+            android:fillColor="#FF212121"
+            android:pathData="M48,40 C44,46 38,50 38,55 C38,59 42,61 46,59 L45,64 L51,64 L50,59 C54,61 58,59 58,55 C58,50 52,46 48,40 Z" />
+    </group>
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:rotation="12">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M47,32 h26 a4,4 0 0 1 4,4 v38 a4,4 0 0 1 -4,4 h-26 a4,4 0 0 1 -4,-4 v-38 a4,4 0 0 1 4,-4 z" />
+        <path
+            android:fillColor="#FFD32F2F"
+            android:pathData="M60,66 C52,59 50,56 50,52 C50,48.5 52.5,46 55.5,46 C57.5,46 59,47 60,48.5 C61,47 62.5,46 64.5,46 C67.5,46 70,48.5 70,52 C70,56 68,59 60,66 Z" />
+    </group>
+</vector>

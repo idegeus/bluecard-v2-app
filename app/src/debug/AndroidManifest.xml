@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android Auto: the host follows the table on the car screen. Only in debug builds: Android Auto has no category
+  for card games, so the Play Store release does not declare a car app (sideloaded builds run on Android Auto with
+  "Unknown sources" switched on in its developer settings).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application>
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+
+        <!-- Exported without a permission on purpose: Android Auto binds to it; the host check is in the service. -->
+        <service
+            android:name="nl.bluecard.app.car.TableCarAppService"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.IOT" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

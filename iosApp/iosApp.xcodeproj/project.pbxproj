@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8DE97C21314BD9AC26AD77A /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C65B8068427088D556BB48 /* iOSApp.swift */; };
+		B1E3D6A7B0FF22BD01EB91E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77083F8A86567BB26CAEFF11 /* Assets.xcassets */; };
+		8115B0E62B40FF53CCD8F3CD /* sfx_cheat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4265F349727CFE95B5AD704B /* sfx_cheat.wav */; };
+		69DBECD9D4951BFE581E2740 /* sfx_false_alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = EC8DDA909FAE4DFD75CB1486 /* sfx_false_alarm.wav */; };
+		37F69EA1D5A653E125DCCED1 /* sfx_forgot.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEF6082DF5A3A50B7546C720 /* sfx_forgot.wav */; };
+		4136C4162A4AB91B60CDB067 /* sfx_buzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60C342E9E6F1759761C48576 /* sfx_buzz.wav */; };
+		E35140C31B914CC723F61C76 /* sfx_shuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = AD6B4FB88878DD518EB964C3 /* sfx_shuffle.wav */; };
+		45D4DDF4CC4F8A2E19762C73 /* sfx_drumroll.wav in Resources */ = {isa = PBXBuildFile; fileRef = ECCD9F67E7D5656A80C71A03 /* sfx_drumroll.wav */; };
+		92E6BB8DA0067E8996C3ADEA /* sfx_busted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4820ECC10CA0D19FDFD1FF56 /* sfx_busted.wav */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		996AD237BC284D463E664FFE /* BlueCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F190542714D6E725FFF7F2BD /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		F3C65B8068427088D556BB48 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		77083F8A86567BB26CAEFF11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		399D0FEC7E1065D061E1CBAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4265F349727CFE95B5AD704B /* sfx_cheat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_cheat.wav; sourceTree = "<group>"; };
+		EC8DDA909FAE4DFD75CB1486 /* sfx_false_alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_false_alarm.wav; sourceTree = "<group>"; };
+		CEF6082DF5A3A50B7546C720 /* sfx_forgot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_forgot.wav; sourceTree = "<group>"; };
+		60C342E9E6F1759761C48576 /* sfx_buzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_buzz.wav; sourceTree = "<group>"; };
+		AD6B4FB88878DD518EB964C3 /* sfx_shuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_shuffle.wav; sourceTree = "<group>"; };
+		ECCD9F67E7D5656A80C71A03 /* sfx_drumroll.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_drumroll.wav; sourceTree = "<group>"; };
+		4820ECC10CA0D19FDFD1FF56 /* sfx_busted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_busted.wav; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FCBC29864E7C7752B7E193F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71DC27D9F8E3B109C877BFC4 = {
+			isa = PBXGroup;
+			children = (
+				89B104369EBC5E85E7E43C6B /* Configuration */,
+				3F4D5DCCBAD764FE2E47EC05 /* iosApp */,
+				113236722DEE1DC96F378B9D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89B104369EBC5E85E7E43C6B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				F190542714D6E725FFF7F2BD /* Config.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		3F4D5DCCBAD764FE2E47EC05 /* iosApp */ = {
+			isa = PBXGroup;
+			children = (
+				F3C65B8068427088D556BB48 /* iOSApp.swift */,
+				77083F8A86567BB26CAEFF11 /* Assets.xcassets */,
+				399D0FEC7E1065D061E1CBAC /* Info.plist */,
+				523BFB79E403654C8E6CCE71 /* Sounds */,
+			);
+			path = iosApp;
+			sourceTree = "<group>";
+		};
+		523BFB79E403654C8E6CCE71 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4265F349727CFE95B5AD704B /* sfx_cheat.wav */,
+				EC8DDA909FAE4DFD75CB1486 /* sfx_false_alarm.wav */,
+				CEF6082DF5A3A50B7546C720 /* sfx_forgot.wav */,
+				60C342E9E6F1759761C48576 /* sfx_buzz.wav */,
+				AD6B4FB88878DD518EB964C3 /* sfx_shuffle.wav */,
+				ECCD9F67E7D5656A80C71A03 /* sfx_drumroll.wav */,
+				4820ECC10CA0D19FDFD1FF56 /* sfx_busted.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		113236722DEE1DC96F378B9D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				996AD237BC284D463E664FFE /* BlueCard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42AEFBAE01D2DFD981F7DA7D /* iosApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EB39897192143D4967C0D30 /* Build configuration list for PBXNativeTarget "iosApp" */;
+			buildPhases = (
+				1D3F2ED4FFA4905DA55369D6 /* Compile Kotlin Framework */,
+				C197A1D4E0DE673615AC32CB /* Sources */,
+				4FCBC29864E7C7752B7E193F /* Frameworks */,
+				8A6A452CEE30B0908A47D41D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iosApp;
+			productName = iosApp;
+			productReference = 996AD237BC284D463E664FFE /* BlueCard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					42AEFBAE01D2DFD981F7DA7D = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 32D42B6A09FA42C6EFFC8E0F /* Build configuration list for PBXProject "iosApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				nl,
+				fr,
+				de,
+				ca,
+				eu,
+			);
+			mainGroup = 71DC27D9F8E3B109C877BFC4;
+			productRefGroup = 113236722DEE1DC96F378B9D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42AEFBAE01D2DFD981F7DA7D /* iosApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A6A452CEE30B0908A47D41D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1E3D6A7B0FF22BD01EB91E2 /* Assets.xcassets in Resources */,
+				8115B0E62B40FF53CCD8F3CD /* sfx_cheat.wav in Resources */,
+				69DBECD9D4951BFE581E2740 /* sfx_false_alarm.wav in Resources */,
+				37F69EA1D5A653E125DCCED1 /* sfx_forgot.wav in Resources */,
+				4136C4162A4AB91B60CDB067 /* sfx_buzz.wav in Resources */,
+				E35140C31B914CC723F61C76 /* sfx_shuffle.wav in Resources */,
+				45D4DDF4CC4F8A2E19762C73 /* sfx_drumroll.wav in Resources */,
+				92E6BB8DA0067E8996C3ADEA /* sfx_busted.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D3F2ED4FFA4905DA55369D6 /* Compile Kotlin Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Compile Kotlin Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation (OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED=YES)\"\n  exit 0\nfi\n# Gradle needs JDK 17 or newer; Xcode does not inherit your shell environment.\nif [ -z \"$JAVA_HOME\" ]; then\n  export JAVA_HOME=$(/usr/libexec/java_home -v 17 2>/dev/null || /usr/libexec/java_home 2>/dev/null)\nfi\ncd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C197A1D4E0DE673615AC32CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8DE97C21314BD9AC26AD77A /* iOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		39449EDF7B151AF1BDA56BF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F190542714D6E725FFF7F2BD /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		453FF012BC101FA2B9706FEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F190542714D6E725FFF7F2BD /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		278C5A3EB8F05FE39E171C50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				ENABLE_PREVIEWS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
+				INFOPLIST_FILE = iosApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					BlueCardShared,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
+				PRODUCT_NAME = "${APP_NAME}";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1AD3193D2AA82BB342AF9019 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				ENABLE_PREVIEWS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
+				INFOPLIST_FILE = iosApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					BlueCardShared,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
+				PRODUCT_NAME = "${APP_NAME}";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32D42B6A09FA42C6EFFC8E0F /* Build configuration list for PBXProject "iosApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39449EDF7B151AF1BDA56BF2 /* Debug */,
+				453FF012BC101FA2B9706FEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EB39897192143D4967C0D30 /* Build configuration list for PBXNativeTarget "iosApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278C5A3EB8F05FE39E171C50 /* Debug */,
+				1AD3193D2AA82BB342AF9019 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}

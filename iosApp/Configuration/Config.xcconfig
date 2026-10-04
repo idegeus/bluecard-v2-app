@@ -1,0 +1,4 @@
+// Fill in your Apple Developer Team ID here (or choose the team in Xcode under Signing & Capabilities).
+TEAM_ID=
+BUNDLE_ID=nl.bluecard.app
+APP_NAME=BlueCard

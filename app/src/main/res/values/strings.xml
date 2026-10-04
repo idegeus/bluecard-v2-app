@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- All app texts live in shared/src/commonMain/strings (shared with iOS); only the launcher label is here. -->
+    <string name="app_name" translatable="false">BlueCard</string>
+</resources>
