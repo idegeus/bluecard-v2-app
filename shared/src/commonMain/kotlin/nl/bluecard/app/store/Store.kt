@@ -52,6 +52,9 @@ sealed interface StoreEvent {
 
 /** The platform's store (Google Play Billing on Android; StoreKit on iOS later). */
 interface AppStore {
+    /** False where this platform has no store at all yet (iOS until StoreKit is added): the shop is not shown. */
+    val supported: Boolean get() = true
+
     /** True once the store answered with products: false before the app is in the store, offline or unsupported. */
     val ready: StateFlow<Boolean>
     val products: StateFlow<Map<String, StoreProduct>>
@@ -72,6 +75,7 @@ interface AppStore {
 
 /** No store on this platform (yet): nothing for sale, nothing owned. */
 object NoStore : AppStore {
+    override val supported: Boolean = false
     override val ready: StateFlow<Boolean> = MutableStateFlow(false)
     override val products: StateFlow<Map<String, StoreProduct>> = MutableStateFlow(emptyMap())
     override val owned: StateFlow<Set<String>> = MutableStateFlow(emptySet())

@@ -7,9 +7,9 @@ Multipeer Connectivity. Het Xcode-project staat in `iosApp/`.
 
 ## Eerste keer bouwen
 
-1. **Xcode installeren** (gratis, App Store). Op deze Mac stond geen Xcode, daarom is de iOS-app hier wel
-   gecompileerd maar nog niet gelinkt of in een simulator gestart (zie "Wat is getest" hieronder).
-   Open Xcode één keer en laat het de extra componenten installeren, en zet daarna de command line tools goed:
+1. **Xcode installeren** (gratis, App Store), plus het **iOS-platform** (*Xcode → Settings → Components*, of
+   `xcodebuild -downloadPlatform iOS`, ±8 GB). Zonder dat platform weigert Xcode elk iOS-doel ("iOS 26.5 is not
+   installed"). Zet daarna de command line tools goed:
 
    ```bash
    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
@@ -60,14 +60,14 @@ iOS staat apps geen klassiek Bluetooth (RFCOMM) toe zoals Android. Daarom gebrui
 
 ## Wat is getest
 
-* Alle gedeelde code (UI, sessies, opslag, spellen) is **dezelfde** als op Android en daar op twee telefoons getest,
-  inclusief kleine schermen (320×568 pt, het formaat van de kleinste iPhone SE).
-* De iOS-specifieke code is **gecompileerd tegen de echte iOS-API's** (`./gradlew :shared:compileKotlinIosArm64
-  :shared:compileKotlinIosSimulatorArm64`, zonder fouten).
-* **Niet getest** (geen Xcode/iPhone beschikbaar op deze Mac): het linken van het framework, de app in de
-  simulator, Multipeer tussen twee iPhones, de fotokiezer en geluid op iOS, en uit ronde 5/6: haptiek, schudden met
-  CoreMotion, het deelmenu, het overnemen van de host-rol en de Catalaanse/Baskische lokalisatie in iOS zelf. Mocht de eerste build in Xcode iets
-  melden, dan staat de oorzaak in het build-log van de fase *Compile Kotlin Framework*.
+* **5 oktober 2026, Xcode 26.6, simulator iPhone 17 Pro (iOS 26.5):** de app bouwt en linkt
+  (`xcodebuild … -destination 'id=<simulator>' build`), start, en speelt: beginscherm, *Spel starten* → lobby
+  (Multipeer-host), bot toevoegen, schudden (zonder bewegingssensor: snel tikken), ruilfase, *Klaar*, een kaart naar
+  de stapel slepen, bot speelt terug. Taal volgt de Mac/simulator (Nederlands).
+* Alle gedeelde code (UI, sessies, opslag, spellen) is **dezelfde** als op Android en daar op twee telefoons getest.
+* **Nog niet getest:** een echte iPhone (vraagt je Apple-ID als team bij *Signing & Capabilities*), Multipeer
+  tussen twee iPhones, fotokiezer, geluid/haptiek op een toestel, delen, de host-overdracht op iOS. In-app aankopen
+  zijn op iOS nog niet ingebouwd (StoreKit volgt; de winkel is daar verborgen).
 
 ## Bestanden
 

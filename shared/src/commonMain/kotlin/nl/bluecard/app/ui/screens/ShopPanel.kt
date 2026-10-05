@@ -37,6 +37,7 @@ import nl.bluecard.app.ui.theme.TableColors
 @Composable
 fun ShopPanel() {
     val store = appContainer().store
+    if (!store.supported) return
     val ready by store.ready.collectAsStateWithLifecycle()
     val products by store.products.collectAsStateWithLifecycle()
     val entitlements by appContainer().entitlements.collectAsStateWithLifecycle()
