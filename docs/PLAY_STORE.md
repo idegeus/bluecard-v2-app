@@ -135,5 +135,4 @@ en komt na herinstallatie terug (*Aankopen herstellen* in de winkel). Controle g
 
 Het privacybeleid (Engels) staat op de website in de aparte repository `bluecard-site`
 (`/Users/ivo/Documents/Projects/bluecard-site`): `privacy/index.html`, met landingspagina's in het Engels en
-Nederlands en `app-ads.txt` voor AdMob. Publiceren via GitHub Pages; zie de README daar. Vul vóór publicatie
-`[DEVELOPER NAME]` en `[CONTACT EMAIL]` in.
+Nederlands en `app-ads.txt` voor AdMob. Publiceren via GitHub Pages; zie de README daar.
