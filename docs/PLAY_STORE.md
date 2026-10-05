@@ -68,7 +68,7 @@ Organisatie-accounts hebben die eis niet. Upload de `.aab` daarom eerst naar *Te
 
 ## 5. App-content (👤, antwoorden)
 
-* **Privacybeleid-URL**: verplicht (advertenties). Concept hieronder; zet het op een openbare pagina.
+* **Privacybeleid-URL**: verplicht (advertenties). Staat op de website, zie onderaan ("Website en privacybeleid").
 * **Advertenties**: *Ja, mijn app bevat advertenties*.
 * **App-toegang**: alle functies zonder inloggen.
 * **Doelgroep**: 13+ (kies géén leeftijden onder 13; anders gelden de Families-regels voor advertenties).
@@ -131,25 +131,9 @@ en komt na herinstallatie terug (*Aankopen herstellen* in de winkel). Controle g
 
 ---
 
-## Concept privacybeleid (aanpassen: naam, e-mail, datum)
+## Website en privacybeleid
 
-> **Privacybeleid BlueCard** — laatst bijgewerkt: [datum]
->
-> BlueCard is een kaartspel van [jouw naam/bedrijf]. Contact: [e-mailadres].
->
-> **Gegevens die de app zelf gebruikt.** Je spelersnaam, instellingen en een bewaard spel worden alleen op je
-> eigen telefoon opgeslagen. Bij een Bluetooth-spel worden je naam en de spelzetten rechtstreeks naar de telefoons
-> aan tafel gestuurd. Wij ontvangen, bewaren of verkopen geen persoonsgegevens; er is geen account en geen server.
->
-> **Advertenties.** Op het start- en eindscherm toont de app advertenties van Google AdMob. Google kan daarvoor
-> gegevens verzamelen, zoals de advertentie-ID van je toestel, je IP-adres en informatie over de advertenties
-> die je ziet. In de EER en het VK vragen we eerst je toestemming; je kunt die altijd wijzigen via
-> *Instellingen → Over → Privacy-instellingen advertenties*. Meer informatie:
-> https://policies.google.com/technologies/partner-sites
->
-> **Rechten.** De app vraagt Bluetooth-rechten om telefoons in de buurt te vinden en te verbinden, en (optioneel)
-> meldingen voor de melding "Bluetooth-spel actief". De locatie wordt niet gebruikt.
->
-> **Kinderen.** De app is niet gericht op kinderen jonger dan 13 jaar.
->
-> **Wijzigingen.** Een nieuwe versie van dit beleid zetten we op deze pagina.
+Het privacybeleid (Engels) staat op de website in de aparte repository `bluecard-site`
+(`/Users/ivo/Documents/Projects/bluecard-site`): `privacy/index.html`, met landingspagina's in het Engels en
+Nederlands en `app-ads.txt` voor AdMob. Publiceren via GitHub Pages; zie de README daar. Vul vóór publicatie
+`[DEVELOPER NAME]` en `[CONTACT EMAIL]` in.
