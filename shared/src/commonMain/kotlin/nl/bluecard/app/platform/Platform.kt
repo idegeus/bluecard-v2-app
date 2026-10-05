@@ -21,6 +21,9 @@ interface Platform {
     val transport: GameTransport?
     val sounds: SoundPlayer
     val ads: PlatformAds
+
+    /** In-app purchases; [nl.bluecard.app.store.NoStore] where there is no store (yet). */
+    val store: nl.bluecard.app.store.AppStore get() = nl.bluecard.app.store.NoStore
     val language: LanguageSettings
     val ui: PlatformUi
 

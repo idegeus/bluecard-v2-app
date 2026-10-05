@@ -107,6 +107,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.play.services.ads)
     implementation(libs.ump)
+    implementation(libs.play.billing)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     // Android Auto view for the host (debug builds only, see src/debug/AndroidManifest.xml).

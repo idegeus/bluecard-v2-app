@@ -7,13 +7,14 @@ import androidx.compose.ui.graphics.Color
 import nl.bluecard.app.session.GameKind
 import nl.bluecard.app.stats.Progress
 import nl.bluecard.app.stats.Requirement
+import nl.bluecard.app.store.Entitlements
 
 /** How the back of a card is decorated. */
 enum class BackPattern { LATTICE, DOTS, STRIPES, SUNBURST, HOLO, RAINBOW }
 
 /**
- * Card backs. Most are unlocked by playing (see [Requirement]); [premiumPriceCents] marks a paid skin (not for sale yet: it stays
- * locked and only shows its price).
+ * Card backs. Most are unlocked by playing (see [Requirement]); [premiumPriceCents] marks a paid skin, bought in the store as
+ * [nl.bluecard.app.store.Products.skin] (the store's own price is shown when it is known; this one is the fallback).
  */
 enum class CardBackSkin(
     val id: String,
@@ -61,6 +62,8 @@ enum class TableSkin(
     val feltLight: Color,
     val onFeltMuted: Color,
     val look: TableLook = TableLook.FELT,
+    /** Sold in the store (see [nl.bluecard.app.store.Products.skin]) instead of unlocked by playing. */
+    val isPremium: Boolean = false,
 ) {
     GREEN("green", Requirement.Free, Color(0xFF0F5A43), Color(0xFF0A3D2E), Color(0xFF1B7358), Color(0xFFB9D6CA)),
     BLUE("blue", Requirement.GamePlayed(GameKind.HARTENJAGEN, 5), Color(0xFF0F3F6E), Color(0xFF0A2A4A), Color(0xFF1D5A96), Color(0xFFB7CCE4)),
@@ -82,19 +85,21 @@ object Skins {
 
     var table: TableSkin by mutableStateOf(TableSkin.GREEN)
 
-    fun isUnlocked(skin: CardBackSkin, progress: Progress): Boolean = !skin.isPremium && skin.requirement.met(progress)
+    fun isUnlocked(skin: CardBackSkin, progress: Progress, entitlements: Entitlements = Entitlements()): Boolean =
+        if (skin.isPremium) entitlements.ownsSkin(skin.id) else skin.requirement.met(progress)
 
-    fun isUnlocked(skin: TableSkin, progress: Progress): Boolean = skin.requirement.met(progress)
+    fun isUnlocked(skin: TableSkin, progress: Progress, entitlements: Entitlements = Entitlements()): Boolean =
+        if (skin.isPremium) entitlements.ownsSkin(skin.id) else skin.requirement.met(progress)
 
-    /** The host's look at a table you joined (whatever the host unlocked). */
+    /** The host's look at a table you joined (whatever the host unlocked or bought: everyone sees it). */
     fun applyHost(cardBackId: String, tableId: String) {
-        cardBack = CardBackSkin.fromId(cardBackId)?.takeIf { !it.isPremium } ?: CardBackSkin.CLASSIC
+        cardBack = CardBackSkin.fromId(cardBackId) ?: CardBackSkin.CLASSIC
         table = TableSkin.fromId(tableId) ?: TableSkin.GREEN
     }
 
     /** Applies the chosen skins, falling back to the defaults for anything not (or no longer) unlocked. */
-    fun apply(cardBackId: String, tableId: String, progress: Progress) {
-        cardBack = CardBackSkin.fromId(cardBackId)?.takeIf { isUnlocked(it, progress) } ?: CardBackSkin.CLASSIC
-        table = TableSkin.fromId(tableId)?.takeIf { isUnlocked(it, progress) } ?: TableSkin.GREEN
+    fun apply(cardBackId: String, tableId: String, progress: Progress, entitlements: Entitlements = Entitlements()) {
+        cardBack = CardBackSkin.fromId(cardBackId)?.takeIf { isUnlocked(it, progress, entitlements) } ?: CardBackSkin.CLASSIC
+        table = TableSkin.fromId(tableId)?.takeIf { isUnlocked(it, progress, entitlements) } ?: TableSkin.GREEN
     }
 }

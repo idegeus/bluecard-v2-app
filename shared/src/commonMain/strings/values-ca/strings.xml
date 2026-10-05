@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BlueCard</string>
-    <string name="game_zweeds_pesten">Shithead</string>
+    <string name="game_zweeds_pesten">Palace</string>
     <string name="back">Enrere</string>
     <string name="cancel">Cancel·la</string>
     <string name="ok">D\'acord</string>
@@ -438,7 +438,7 @@
     <string name="game_choice">Joc</string>
     <string name="game_choice_zweeds_detail">Cartes a la mà, boca amunt i cegues; juga igual o més alt</string>
     <string name="game_choice_pesten_detail">Segueix el pal o el valor; empipa els rivals amb cartes de robar</string>
-    <string name="settings_house_rules_zweeds">Regles de la casa de Shithead</string>
+    <string name="settings_house_rules_zweeds">Regles de la casa de Palace</string>
     <string name="settings_house_rules_pesten">Regles de la casa del Vuit boig</string>
     <string name="hr_title_pesten">Regles de la casa del Vuit boig</string>
     <string name="suit_CLUBS">Trèvols</string>
@@ -916,4 +916,18 @@
     <string name="car_bot">Bot</string>
     <string name="car_player">Jugador</string>
     <string name="host_visible_not_needed">Els mòbils amb BlueCard troben la teva taula de seguida, encara que el teu mòbil no sigui visible. Només per a una versió antiga o un mòbil que no capti l’avís: fes-lo visible.</string>
+    <string name="shop_title">Botiga</string>
+    <string name="shop_no_ads">Sense anuncis</string>
+    <string name="shop_no_ads_detail">Treu els bàners de la pantalla d’inici i de final.</string>
+    <string name="shop_bundle">Tot en un</string>
+    <string name="shop_bundle_detail">Sense anuncis i tots els skins premium, també els futurs.</string>
+    <string name="shop_tip_title">Convida el creador</string>
+    <string name="shop_tip_detail">Una propina ajuda BlueCard a continuar. Tindràs un 💚 al costat del teu nom.</string>
+    <string name="shop_supporter">💚 Gràcies! Ets un seguidor.</string>
+    <string name="shop_owned">Comprat</string>
+    <string name="shop_restore">Restaurar compres</string>
+    <string name="shop_unavailable">La botiga funciona quan BlueCard s’instal·la des de Google Play.</string>
+    <string name="shop_thanks">Gràcies per la compra!</string>
+    <string name="shop_pending">S’està processant el pagament; la compra es desbloqueja quan arribi.</string>
+    <string name="shop_failed">La compra no s’ha pogut fer.</string>
 </resources>

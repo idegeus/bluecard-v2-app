@@ -34,6 +34,7 @@ class AppContainer(val platform: Platform) {
     val matches = MatchRepository(platform.files, appScope, platform)
     val sessions = SessionManager(platform, appScope, settingsRepository, savedGames, matches)
     val ads: PlatformAds get() = platform.ads
+    val store: nl.bluecard.app.store.AppStore get() = platform.store
 
     /** Settings as a hot flow so screens get a value immediately. */
     val settings: StateFlow<AppSettings> =
@@ -52,6 +53,11 @@ class AppContainer(val platform: Platform) {
     val myProgress: StateFlow<nl.bluecard.app.stats.Progress> =
         combine(settings, matches.records) { s, records -> nl.bluecard.app.stats.Progress.of(records, s.deviceId) }
             .stateIn(appScope, SharingStarted.Eagerly, nl.bluecard.app.stats.Progress())
+
+    /** What this account bought (no ads, premium skins, supporter). */
+    val entitlements: StateFlow<nl.bluecard.app.store.Entitlements> =
+        combine(store.owned, store.supporter) { owned, supporter -> nl.bluecard.app.store.Entitlements(owned, supporter) }
+            .stateIn(appScope, SharingStarted.Eagerly, nl.bluecard.app.store.Entitlements())
 
     init {
         AvatarPhotos.decoder = platform::decodeImage

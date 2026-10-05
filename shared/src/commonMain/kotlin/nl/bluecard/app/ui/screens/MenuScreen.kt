@@ -180,6 +180,9 @@ fun MenuScreen(
                             PlayerAvatar(settings.displayName, size = 30.dp, avatar = settings.avatar)
                             Spacer(Modifier.width(8.dp))
                             Text(stringResource(R.string.menu_hello, settings.playerName), color = TableColors.OnFelt)
+                            // A small thank-you for those who tipped.
+                            val thanks by container.entitlements.collectAsStateWithLifecycle()
+                            if (thanks.supporter) Text(" 💚", color = TableColors.OnFelt)
                         }
                     }
                     Spacer(Modifier.height(if (compact) 0.dp else 8.dp))
@@ -247,7 +250,8 @@ fun MenuScreen(
                         }
                     }
                 }
-                if (showAd) container.ads.Banner(AdSlot.HOME, Modifier)
+                val entitlements by container.entitlements.collectAsStateWithLifecycle()
+                if (showAd && !entitlements.adsRemoved) container.ads.Banner(AdSlot.HOME, Modifier)
             }
         }
         SnackbarHost(snackbar, Modifier.align(Alignment.BottomCenter).navigationBarsPadding())

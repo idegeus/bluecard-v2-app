@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BlueCard</string>
-    <string name="game_zweeds_pesten">Shithead</string>
+    <string name="game_zweeds_pesten">Palace</string>
     <string name="back">Atzera</string>
     <string name="cancel">Utzi</string>
     <string name="ok">Ados</string>
@@ -426,7 +426,7 @@
     <string name="game_choice">Jokoa</string>
     <string name="game_choice_zweeds_detail">Eskuko, agerian eta itsuko kartak; jokatu berdina edo altuagoa</string>
     <string name="game_choice_pesten_detail">Jarraitu paloari edo balioari; zirikatu aurkariak lapurtzeko kartekin</string>
-    <string name="settings_house_rules_zweeds">Shithead-en etxeko arauak</string>
+    <string name="settings_house_rules_zweeds">Palace-en etxeko arauak</string>
     <string name="settings_house_rules_pesten">Zortzi eroaren etxeko arauak</string>
     <string name="hr_title_pesten">Zortzi eroaren etxeko arauak</string>
     <string name="suit_CLUBS">Hirustak</string>
@@ -872,4 +872,18 @@
     <string name="car_bot">Bota</string>
     <string name="car_player">Jokalaria</string>
     <string name="host_visible_not_needed">BlueCard duten telefonoek berehala aurkitzen dute zure mahaia, zure telefonoa ikusgai egon gabe ere. Bertsio zahar baterako edo iragarpena jasotzen ez duen telefono baterako bakarrik: egin ikusgai.</string>
+    <string name="shop_title">Denda</string>
+    <string name="shop_no_ads">Iragarkirik gabe</string>
+    <string name="shop_no_ads_detail">Hasierako eta amaierako pantailetako bannerrak kentzen ditu.</string>
+    <string name="shop_bundle">Dena batean</string>
+    <string name="shop_bundle_detail">Iragarkirik gabe eta premium skin guztiak, etorkizunekoak ere.</string>
+    <string name="shop_tip_title">Gonbidatu sortzailea</string>
+    <string name="shop_tip_detail">Eskupeko batek BlueCard aurrera eramaten laguntzen du. 💚 bat jasoko duzu zure izenaren ondoan.</string>
+    <string name="shop_supporter">💚 Eskerrik asko! Babeslea zara.</string>
+    <string name="shop_owned">Erosita</string>
+    <string name="shop_restore">Erosketak berreskuratu</string>
+    <string name="shop_unavailable">Denda BlueCard Google Play-tik instalatzen denean dabil.</string>
+    <string name="shop_thanks">Eskerrik asko erosketagatik!</string>
+    <string name="shop_pending">Ordainketa prozesatzen ari da; erosketa jaso bezain laster desblokeatuko da.</string>
+    <string name="shop_failed">Erosketa ez da burutu.</string>
 </resources>

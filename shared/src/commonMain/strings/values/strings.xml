@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BlueCard</string>
-    <string name="game_zweeds_pesten">Shithead</string>
+    <string name="game_zweeds_pesten">Palace</string>
     <string name="back">Back</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
@@ -426,7 +426,7 @@
     <string name="game_choice">Game</string>
     <string name="game_choice_zweeds_detail">Hand, face-up and blind cards; play equal or higher</string>
     <string name="game_choice_pesten_detail">Follow suit or value; annoy your opponents with draw cards</string>
-    <string name="settings_house_rules_zweeds">House rules Shithead</string>
+    <string name="settings_house_rules_zweeds">House rules Palace</string>
     <string name="settings_house_rules_pesten">House rules Crazy Eights</string>
     <string name="hr_title_pesten">House rules Crazy Eights</string>
     <string name="suit_CLUBS">Clubs</string>
@@ -872,4 +872,18 @@
     <string name="car_bot">Bot</string>
     <string name="car_player">Player</string>
     <string name="host_visible_not_needed">Phones with BlueCard find your table straight away, also without making your phone visible. Only for an older version or a phone that cannot pick up the announcement, make it visible.</string>
+    <string name="shop_title">Shop</string>
+    <string name="shop_no_ads">No ads</string>
+    <string name="shop_no_ads_detail">Removes the banners from the start and end screens.</string>
+    <string name="shop_bundle">All-in-one</string>
+    <string name="shop_bundle_detail">No ads and every premium skin, also future ones.</string>
+    <string name="shop_tip_title">Treat the maker</string>
+    <string name="shop_tip_detail">A tip keeps BlueCard going. You get a 💚 next to your name.</string>
+    <string name="shop_supporter">💚 Thank you! You are a supporter.</string>
+    <string name="shop_owned">Bought</string>
+    <string name="shop_restore">Restore purchases</string>
+    <string name="shop_unavailable">The shop works once BlueCard is installed from Google Play.</string>
+    <string name="shop_thanks">Thank you for your purchase!</string>
+    <string name="shop_pending">Your payment is being processed; the purchase unlocks as soon as it is in.</string>
+    <string name="shop_failed">The purchase did not go through.</string>
 </resources>

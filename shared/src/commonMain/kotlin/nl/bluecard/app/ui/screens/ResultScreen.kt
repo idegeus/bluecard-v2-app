@@ -282,7 +282,8 @@ fun ResultScreen(onNewGame: () -> Unit, onExitToMenu: () -> Unit, onBackToLobby:
                 }
             }
             // Below everything, away from the buttons; never during play.
-            container.ads.Banner(AdSlot.RESULT, Modifier)
+            val entitlements by container.entitlements.collectAsStateWithLifecycle()
+            if (!entitlements.adsRemoved) container.ads.Banner(AdSlot.RESULT, Modifier)
         }
         // Confetti for the winner.
         val final = ui.summary

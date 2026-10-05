@@ -920,4 +920,18 @@
     <string name="car_bot">Bot</string>
     <string name="car_player">Speler</string>
     <string name="host_visible_not_needed">Telefoons met BlueCard vinden je tafel meteen, ook zonder dat je telefoon zichtbaar is. Alleen voor een oudere versie of een telefoon die de aankondiging niet oppikt: maak hem zichtbaar.</string>
+    <string name="shop_title">Winkel</string>
+    <string name="shop_no_ads">Geen advertenties</string>
+    <string name="shop_no_ads_detail">Haalt de banners van het start- en eindscherm weg.</string>
+    <string name="shop_bundle">Alles-in-één</string>
+    <string name="shop_bundle_detail">Geen advertenties en alle premium skins, ook toekomstige.</string>
+    <string name="shop_tip_title">Trakteer de maker</string>
+    <string name="shop_tip_detail">Een fooi helpt BlueCard verder. Je krijgt een 💚 achter je naam.</string>
+    <string name="shop_supporter">💚 Bedankt! Je bent supporter.</string>
+    <string name="shop_owned">Gekocht</string>
+    <string name="shop_restore">Aankopen herstellen</string>
+    <string name="shop_unavailable">De winkel werkt zodra BlueCard via Google Play is geïnstalleerd.</string>
+    <string name="shop_thanks">Bedankt voor je aankoop!</string>
+    <string name="shop_pending">Je betaling wordt verwerkt; de aankoop komt vrij zodra die binnen is.</string>
+    <string name="shop_failed">De aankoop is niet gelukt.</string>
 </resources>

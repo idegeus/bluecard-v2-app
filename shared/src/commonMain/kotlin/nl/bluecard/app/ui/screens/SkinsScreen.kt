@@ -54,17 +54,23 @@ import nl.bluecard.app.ui.components.FeltPanel
 import nl.bluecard.app.ui.components.FeltScreen
 import nl.bluecard.app.ui.components.PlayingCard
 import nl.bluecard.app.ui.components.appContainer
+import nl.bluecard.app.store.Products
 import nl.bluecard.app.ui.theme.CardBackSkin
 import nl.bluecard.app.ui.theme.Skins
 import nl.bluecard.app.ui.theme.TableColors
 import nl.bluecard.app.ui.theme.TableSkin
 import nl.bluecard.engine.model.Card
 
-/** Card backs and table cloths, unlocked by winning. One premium back is shown but not for sale yet. */
+/** Card backs and table cloths, unlocked by playing or bought in the shop (with the shop itself on top). */
 @Composable
 fun SkinsScreen(onBack: () -> Unit) {
     val container = appContainer()
     val progress by container.myProgress.collectAsStateWithLifecycle()
+    val entitlements by container.entitlements.collectAsStateWithLifecycle()
+    val storeReady by container.store.ready.collectAsStateWithLifecycle()
+    val storeProducts by container.store.products.collectAsStateWithLifecycle()
+    val snackbar = remember { androidx.compose.material3.SnackbarHostState() }
+    StoreMessages(snackbar)
     val wins = progress.wins
     val res = LocalResources.current
     val scope = rememberCoroutineScope()
@@ -74,7 +80,7 @@ fun SkinsScreen(onBack: () -> Unit) {
     previewBack?.let { back ->
         CardBackPreviewDialog(
             back = back,
-            canChoose = Skins.isUnlocked(back, progress),
+            canChoose = Skins.isUnlocked(back, progress, entitlements),
             onChoose = {
                 scope.launch { container.settingsRepository.update { it.copy(cardBackSkin = back.id) } }
                 previewBack = null
@@ -86,7 +92,7 @@ fun SkinsScreen(onBack: () -> Unit) {
         SkinPreviewDialog(
             back = Skins.cardBack,
             table = table,
-            canChoose = Skins.isUnlocked(table, progress),
+            canChoose = Skins.isUnlocked(table, progress, entitlements),
             onChoose = {
                 scope.launch { container.settingsRepository.update { it.copy(tableSkin = table.id) } }
                 previewTable = null
@@ -95,12 +101,13 @@ fun SkinsScreen(onBack: () -> Unit) {
         )
     }
 
-    FeltScreen(title = stringResource(R.string.skins_title), onBack = onBack) {
+    FeltScreen(title = stringResource(R.string.skins_title), onBack = onBack, snackbarHostState = snackbar) {
         FeltHeader(
             title = stringResource(R.string.skins_header),
             subtitle = pluralStringResource(R.plurals.skins_wins, wins, wins),
             cards = listOf(Card.of("JH"), Card.of("AS"), Card.of("KD")),
         )
+        ShopPanel()
         val settings by container.settings.collectAsStateWithLifecycle()
         EmojiPanel(progress, settings.reactionEmojis) { chosen ->
             scope.launch { container.settingsRepository.update { it.copy(reactionEmojis = chosen) } }
@@ -111,9 +118,12 @@ fun SkinsScreen(onBack: () -> Unit) {
                     modifier = modifier,
                     name = stringResource(backName(skin)),
                     chosen = Skins.cardBack == skin,
-                    unlocked = Skins.isUnlocked(skin, progress),
+                    unlocked = Skins.isUnlocked(skin, progress, entitlements),
                     requirement = RequirementTexts.progress(res, skin.requirement, progress),
-                    premiumPriceCents = skin.premiumPriceCents,
+                    premiumPrice = skin.premiumPriceCents?.let { cents ->
+                        storeProducts[Products.skin(skin.id)]?.price ?: stringResource(R.string.skins_price, euros(cents))
+                    },
+                    onBuy = if (storeReady && Products.skin(skin.id) in storeProducts) ({ container.store.buy(Products.skin(skin.id)) }) else null,
                     onChoose = { previewBack = skin },
                 ) { CardBack(58.dp, skin = skin) }
             }
@@ -124,9 +134,10 @@ fun SkinsScreen(onBack: () -> Unit) {
                     modifier = modifier,
                     name = stringResource(tableName(skin)),
                     chosen = Skins.table == skin,
-                    unlocked = Skins.isUnlocked(skin, progress),
+                    unlocked = Skins.isUnlocked(skin, progress, entitlements),
                     requirement = RequirementTexts.progress(res, skin.requirement, progress),
-                    premiumPriceCents = null,
+                    premiumPrice = if (skin.isPremium) storeProducts[Products.skin(skin.id)]?.price else null,
+                    onBuy = if (skin.isPremium && storeReady && Products.skin(skin.id) in storeProducts) ({ container.store.buy(Products.skin(skin.id)) }) else null,
                     onChoose = { previewTable = skin },
                 ) { TablePreview(skin) }
             }
@@ -163,7 +174,10 @@ private fun SkinTile(
     chosen: Boolean,
     unlocked: Boolean,
     requirement: String,
-    premiumPriceCents: Int?,
+    /** The price of a premium skin (null for skins you unlock by playing). */
+    premiumPrice: String?,
+    /** Buys the premium skin; null while the store cannot sell it. */
+    onBuy: (() -> Unit)?,
     onChoose: () -> Unit,
     preview: @Composable () -> Unit,
 ) {
@@ -198,18 +212,21 @@ private fun SkinTile(
         // Status lines sit at the bottom, level across the row.
         Spacer(Modifier.weight(1f))
         when {
-            premiumPriceCents != null -> {
+            premiumPrice != null && !unlocked -> {
                 Text(stringResource(R.string.skins_premium), color = TableColors.Highlight, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Black)
                 Text(
-                    stringResource(R.string.skins_price, euros(premiumPriceCents)),
+                    premiumPrice,
                     color = Color.Black,
                     fontWeight = FontWeight.Black,
                     modifier = Modifier
                         .clip(RoundedCornerShape(50))
                         .background(Brush.horizontalGradient(listOf(Color(0xFFFFE082), Color(0xFFFF80AB), Color(0xFF80DEEA))))
+                        .then(if (onBuy != null) Modifier.clickable(onClick = onBuy) else Modifier)
                         .padding(horizontal = 10.dp, vertical = 2.dp),
                 )
-                Text(stringResource(R.string.skins_coming_soon), color = TableColors.OnFeltMuted, style = MaterialTheme.typography.labelSmall, textAlign = TextAlign.Center)
+                if (onBuy == null) {
+                    Text(stringResource(R.string.skins_coming_soon), color = TableColors.OnFeltMuted, style = MaterialTheme.typography.labelSmall, textAlign = TextAlign.Center)
+                }
             }
             chosen -> Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Filled.Check, contentDescription = null, tint = TableColors.TurnGlow, modifier = Modifier.size(16.dp))

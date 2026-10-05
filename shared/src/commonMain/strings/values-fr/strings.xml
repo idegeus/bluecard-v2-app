@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BlueCard</string>
-    <string name="game_zweeds_pesten">Shithead</string>
+    <string name="game_zweeds_pesten">Palace</string>
     <string name="back">Retour</string>
     <string name="cancel">Annuler</string>
     <string name="ok">OK</string>
@@ -438,7 +438,7 @@
     <string name="game_choice">Jeu</string>
     <string name="game_choice_zweeds_detail">Cartes en main, visibles et cachées ; jouer égal ou plus haut</string>
     <string name="game_choice_pesten_detail">Suivre la couleur ou la valeur ; embête tes adversaires avec des cartes à piocher</string>
-    <string name="settings_house_rules_zweeds">Règles maison Shithead</string>
+    <string name="settings_house_rules_zweeds">Règles maison Palace</string>
     <string name="settings_house_rules_pesten">Règles maison Huit américain</string>
     <string name="hr_title_pesten">Règles maison Huit américain</string>
     <string name="suit_CLUBS">Trèfle</string>
@@ -916,4 +916,18 @@
     <string name="car_bot">Bot</string>
     <string name="car_player">Joueur</string>
     <string name="host_visible_not_needed">Les téléphones avec BlueCard trouvent votre table tout de suite, même si votre téléphone n’est pas visible. Rendez-le visible seulement pour une ancienne version ou un téléphone qui ne capte pas l’annonce.</string>
+    <string name="shop_title">Boutique</string>
+    <string name="shop_no_ads">Sans publicité</string>
+    <string name="shop_no_ads_detail">Retire les bannières des écrans d’accueil et de fin.</string>
+    <string name="shop_bundle">Tout-en-un</string>
+    <string name="shop_bundle_detail">Sans publicité et tous les skins premium, y compris les futurs.</string>
+    <string name="shop_tip_title">Offrez un café au créateur</string>
+    <string name="shop_tip_detail">Un pourboire fait vivre BlueCard. Vous recevez un 💚 à côté de votre nom.</string>
+    <string name="shop_supporter">💚 Merci ! Vous êtes un soutien.</string>
+    <string name="shop_owned">Acheté</string>
+    <string name="shop_restore">Restaurer les achats</string>
+    <string name="shop_unavailable">La boutique fonctionne une fois BlueCard installé depuis Google Play.</string>
+    <string name="shop_thanks">Merci pour votre achat !</string>
+    <string name="shop_pending">Votre paiement est en cours ; l’achat se débloque dès sa réception.</string>
+    <string name="shop_failed">L’achat n’a pas abouti.</string>
 </resources>

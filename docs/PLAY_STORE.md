@@ -61,7 +61,7 @@ Organisatie-accounts hebben die eis niet. Upload de `.aab` daarom eerst naar *Te
 
 **Vertalingen:** de app is er in het Nederlands, Engels, Frans, Duits, Catalaans en Baskisch. Voeg in de Play Console
 (*Store-vermelding → Vertalingen beheren*) dezelfde talen toe; de Engelse tekst kan als basis dienen
-("Crazy Eights and Shithead against bots or together over Bluetooth – no internet needed.").
+("Crazy Eights and Palace against bots or together over Bluetooth – no internet needed.").
 
 **Afbeeldingen:** app-icoon 512×512 PNG, feature graphic 1024×500, minstens 2 telefoon-screenshots
 (bijv. Pesten-tafel, Zweeds Pesten-tafel, bot-setup, eindscherm).
@@ -97,7 +97,35 @@ Organisatie-accounts hebben die eis niet. Upload de `.aab` daarom eerst naar *Te
 * GDPR-bericht in *Privacy en berichten* publiceren (anders verschijnt er geen toestemmingsvraag in de EU).
 * Testtoestellen staan in `AdsManager.TEST_DEVICES` ✅ — die krijgen altijd testadvertenties.
 
-## 7. Uploaden (👤)
+## 7. In-app aankopen (👤, na de eerste upload)
+
+De app gebruikt Google Play Billing 9.1 ✅. Producten kun je pas aanmaken als er een build met de
+billing-bibliotheek in de Play Console staat; **interne test** is genoeg, publiceren is niet nodig.
+
+1. *Instellingen → Betalingsprofiel*: koppel een betalingsprofiel (verkopersaccount) aan je ontwikkelaarsaccount.
+2. Upload de `.aab` naar *Testen → Interne test*.
+3. *Inkomsten genereren met Play → Producten → In-app-producten → Product maken*, met **precies** deze ids
+   (eenmalige producten). De prijzen zijn voorstellen; de app toont wat je hier invult.
+
+   | Product-ID | Naam | Voorstel | Soort in de app |
+   |---|---|---|---|
+   | `no_ads` | Geen advertenties | € 2,99 | blijvend |
+   | `bundle_all` | Alles-in-één (geen advertenties + alle premium skins) | zie hieronder | blijvend |
+   | `skin_diamond_holo` | Kaartrug Diamant Holo | € 99,00 | blijvend |
+   | `tip_small` | Kleine fooi | € 0,99 | fooi (opnieuw te kopen) |
+   | `tip_medium` | Fooi | € 2,99 | fooi |
+   | `tip_large` | Grote fooi | € 4,99 | fooi |
+
+   Let op: `bundle_all` bevat ook Diamant Holo. Is die € 99,00, dan is een goedkope bundel de voordeligste route
+   naar Holo; prijs de bundel daarom hoger dan Holo, of neem Holo er niet in op (zeg het, dan pas ik dat aan).
+4. Zet elk product op *Actief*.
+5. Testen zonder echt geld: *Instellingen → Licentietests* → voeg je Google-account toe. Installeer de app via
+   de link van de interne test (niet via adb: dan kent Play de app niet en blijft de winkel leeg).
+
+Fooien worden na aankoop "verbruikt" (opnieuw te geven) en zetten een 💚 achter je naam; de rest blijft van je
+en komt na herinstallatie terug (*Aankopen herstellen* in de winkel). Controle gebeurt op het toestel (geen server).
+
+## 8. Uploaden (👤)
 
 `./package.sh` → upload `dist/BlueCard-release.aab` en `dist/BlueCard-mapping.txt` (voor leesbare crashrapporten).
 

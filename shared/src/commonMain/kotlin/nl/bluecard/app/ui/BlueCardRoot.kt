@@ -34,15 +34,20 @@ fun BlueCardRoot(container: AppContainer) {
     CompositionLocalProvider(LocalAppContainer provides container) {
         val settings by container.settings.collectAsStateWithLifecycle()
         val progress by container.myProgress.collectAsStateWithLifecycle()
+        val entitlements by container.entitlements.collectAsStateWithLifecycle()
         val active by container.sessions.active.collectAsStateWithLifecycle()
         // At someone else's table you see the host's card backs and cloth.
         val hostStyle by remember(active) {
             (active as? ActiveSession.Joined)?.client?.lobby?.map { it?.style } ?: flowOf(null)
         }.collectAsStateWithLifecycle(null)
         // Skins recolour every screen; locked skins fall back to the defaults.
-        LaunchedEffect(settings.cardBackSkin, settings.tableSkin, progress, hostStyle) {
+        LaunchedEffect(settings.cardBackSkin, settings.tableSkin, progress, entitlements, hostStyle) {
             val style = hostStyle
-            if (style != null) Skins.applyHost(style.cardBack, style.table) else Skins.apply(settings.cardBackSkin, settings.tableSkin, progress)
+            if (style != null) {
+                Skins.applyHost(style.cardBack, style.table)
+            } else {
+                Skins.apply(settings.cardBackSkin, settings.tableSkin, progress, entitlements)
+            }
         }
         // A buzz rattles the whole screen.
         val shake = remember { Animatable(0f) }

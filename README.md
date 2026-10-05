@@ -1,6 +1,6 @@
 # BlueCard — kaartspellen tegen bots of samen via Bluetooth
 
-Offline kaartspelapp voor **Android en iPhone** met vier spellen: **Zweeds Pesten** (*Shithead*), gewoon
+Offline kaartspelapp voor **Android en iPhone** met vier spellen: **Zweeds Pesten** (*Palace*, ook bekend als *Shithead*), gewoon
 **Pesten** (kleur of waarde volgen, met pakkaarten), **Presidenten** (sets hoger leggen; president en sloeber,
 kaarten ruilen) en **Hartenjagen** (*Hearts*: bekennen, harten en de schoppenvrouw ontwijken).
 Speel tegen bots op één telefoon, of met meerdere telefoons samen via **Bluetooth** (iPhone: Multipeer) — zonder
@@ -258,7 +258,7 @@ automatisch het spel van de host.
 * **Talen**: Nederlands, Engels (standaard voor overige talen), Frans, Duits, Catalaans en Baskisch; kiezen onder
   *Instellingen → Taal* (per-app-taal, Android 13+ via `LocaleManager`, ouder via `AppLanguage.wrap`). Pesten heet
   in het Engels *Crazy Eights*, Frans *Huit américain*, Duits *Mau-Mau*, Catalaans *Vuit boig*, Baskisch *Zortzi eroa*;
-  Zweeds Pesten heet in het Engels *Shithead*. Kaartletters (B/V/H, J/Q/K, V/D/R …) en voorgelezen kaartnamen komen uit de resources
+  Zweeds Pesten heet in het Engels *Palace* (net als *Shithead*, maar zonder scheldwoord in de Play Store). Kaartletters (B/V/H, J/Q/K, V/D/R …) en voorgelezen kaartnamen komen uit de resources
   (`CardLabels`). In het Nederlands staat "Jij" in het spelverloop, in andere talen je eigen naam (dan klopt de
   werkwoordsvorm; `R.bool.events_address_viewer`). `StringResourcesTest` controleert dat elke vertaling alle
   teksten en dezelfde placeholders heeft. Het App Bundle splitst niet op taal, zodat de taalkeuze altijd werkt.

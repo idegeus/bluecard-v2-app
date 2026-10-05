@@ -53,6 +53,8 @@ class AndroidPlatform(context: Context, scope: CoroutineScope) : Platform {
     override val transport: GameTransport? = if (bluetooth.isSupported) BluetoothTransport(appContext, bluetooth, scope) else null
     override val sounds: SoundPlayer = SoundEffects(appContext)
     override val ads: PlatformAds = AndroidAds(adsManager) { activity.get() }
+    override val store: nl.bluecard.app.store.AppStore =
+        nl.bluecard.app.store.PlayBillingStore(appContext, scope) { activity.get() }.also { it.start() }
     override val language: LanguageSettings = AndroidLanguage(appContext) { activity.get() }
     override val ui: PlatformUi = AndroidPlatformUi()
 
